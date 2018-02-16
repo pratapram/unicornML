@@ -22,7 +22,7 @@
   <script type="text/javascript" src="js/unicornFeedback.js"></script>
   <title>Unicorn Feedback</title>
  </head>
- <body onload="geteventquestions_unicornfeedback()">
+ <body onload="getfeedbacksfrombackend()">
  <h2>Voice of the Customer application</h2>
   		<div class="w3-row-padding">
 			<div id="content-refresh" class="w3-third">

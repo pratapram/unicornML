@@ -15,7 +15,7 @@
 		}
 		// get feedback from backend
 		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "getallcontents"
-		console.info("unicornFeedback - in geteventquestions() Sending Request= " + requestPage);
+		console.info("unicornFeedback - in getfeedbacksfrombackend() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
 	}// end getfeedbacksfrombackend() function
@@ -51,7 +51,7 @@
 		buttons += "<button type=\"button\">Identify Gender</button> ";
 		
 		myObj = JSON.parse(eventData);
-		console.info("unicornFeedback - in buildquestionstable eventData = " + eventData);
+		console.info("unicornFeedback - in buildfeedbacktable eventData = " + eventData);
 		mainTable = "<table><col width=2%><col width=20%><col width=60%><col width=9%><col width=9%><tr><th></th><th>Name</th><th><center>Feedback</center></th><th>Sentiment</th><th>Gender</th></tr>";
 
 		try{
@@ -65,8 +65,8 @@
 		}
 		catch(err) {
 			if (err instanceof TypeError) {
-				console.warn("unicornFeedback - in buildquestionstable. root cause is new event no S3 file yet");
-				console.warn("unicornFeedback - in buildquestionstable. ERROR = " + err);
+				console.warn("unicornFeedback - in buildfeedbacktable. root cause is new event no S3 file yet");
+				console.warn("unicornFeedback - in buildfeedbacktable. ERROR = " + err);
 			}
 			else{
 				console.error("unicornFeedback - in buildquestionstable. ERROR = " + err);
@@ -76,5 +76,29 @@
 
 		document.getElementById("feedbackTable").innerHTML = mainTable;
 		document.getElementById("buttons").innerHTML = buttons;
-
 	}// end buildfeedbacktable() function
+
+	function submitFeedback(form) {
+		console.info("unicornFeedback - in submitFeedback()");
+		lastname = form.lname.value;
+		firstname = form.fname.value;
+		feedback = form.feedback.value;
+		console.info(lastname + ", " + firstname + " and her feedback is: " + feedback);
+
+		if (typeof window.ActiveXObject != 'undefined' ) { 
+			xmlDocRef = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		else {
+			xmlDocRef = new XMLHttpRequest();
+		}
+
+		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "enterfeedback?FirstName=" + firstname + "&LastName=" + lastname + "&Feedback=" + feedback
+		console.info("unicornFeedback - in submitFeedback() Sending Request= " + requestPage);
+		xmlDocRef.open( "GET", requestPage, true );
+		xmlDocRef.send( null );
+	}
+
+	function redirect() {
+	  window.location.replace("unicornfeedback.html");
+	  return false;
+	}

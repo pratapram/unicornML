@@ -76,5 +76,30 @@
 
 		document.getElementById("feedbackTable").innerHTML = mainTable;
 		document.getElementById("buttons").innerHTML = buttons;
-
 	}// end buildfeedbacktable() function
+
+	function submitFeedback(form) {
+		console.info("unicornFeedback - in submitFeedback()");
+		lastname = form.lname.value;
+		firstname = form.fname.value;
+		feedback = form.feedback.value;
+		console.info(lastname + ", " + firstname + " and her feedback is: " + feedback);
+
+		if (typeof window.ActiveXObject != 'undefined' ) { 
+			xmlDocRef = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		else {
+			xmlDocRef = new XMLHttpRequest();
+		}
+
+		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "enterfeedback?FirstName=" + firstname + "&LastName=" + lastname + "&Feedback=" + feedback
+		console.info("unicornFeedback - in submitFeedback() Sending Request= " + requestPage);
+		xmlDocRef.open( "GET", requestPage, true );
+		xmlDocRef.send( null );
+	}
+
+	function redirect() {
+		console.info("unicornFeedback - in redirect()");
+		window.location.replace("unicornfeedback.html");
+		return false;
+	}

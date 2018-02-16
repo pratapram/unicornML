@@ -20,14 +20,19 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <script type="text/javascript" src="js/unicornFeedback.js"></script>
-  <title>Unicorn Feedback</title>
+  <title>Enter Feedback</title>
  </head>
- <body onload="getfeedbacksfrombackend()">
+ <body>
  <h2>Voice of the Customer application</h2>
   		<div class="w3-row-padding">
 			<div id="content-refresh">
-				<p id="feedbackTable"></p>
-				<p id="buttons"></p>
+			 <form method="post" onSubmit="return redirect();location.replace("unicornfeedback.html");">
+			  First name: <input type="text" name="fname"><br>
+			  Last name: <input type="text" name="lname"><br>
+			  Feedback: <textarea rows="4" cols="50" name="feedback"></textarea> 
+			  <input type="button" value="Submit" onClick="submitFeedback(this.form)">
+			</form> 
+			
 			</div>
 		</div>
  </body>
