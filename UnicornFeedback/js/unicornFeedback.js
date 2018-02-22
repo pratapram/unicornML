@@ -96,10 +96,6 @@
 		console.info("unicornFeedback - in submitFeedback() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
+		window.location.replace("unicornfeedback.html");
 	}
 
-	function redirect() {
-		console.info("unicornFeedback - in redirect()");
-		window.location.replace("unicornfeedback.html");
-		return false;
-	}

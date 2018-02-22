@@ -26,7 +26,7 @@
  <h2>Voice of the Customer application</h2>
   		<div class="w3-row-padding">
 			<div id="content-refresh">
-			 <form method="post" onsubmit="return redirect();location.replace("unicornfeedback.html");">
+			 <form action="unicornfeedback.html">
 			  First name: <input type="text" name="fname"><br>
 			  Last name: <input type="text" name="lname"><br>
 			  Feedback: <textarea rows="4" cols="50" name="feedback"></textarea> 
