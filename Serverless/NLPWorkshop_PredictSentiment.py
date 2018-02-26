@@ -6,15 +6,15 @@ dynamodb = boto3.resource('dynamodb')
 client = boto3.client('comprehend')
 
 def lambda_handler(event, context):
-    #print("Received event: " + json.dumps(event, indent=2))
+    print("Received event: " + json.dumps(event, indent=2))
     ids = event['ID'].split(',')
-    id = int(ids[0])
+    id = ids[0]
     
     try:
         table = dynamodb.Table('UnicornFeedback')
         
         for id in ids:
-            response_d = table.scan(FilterExpression=Attr('ID').eq(int(id)))
+            response_d = table.scan(FilterExpression=Attr('ID').eq(id))
             items = response_d['Items']
             feedback = items[0]['Feedback']
             name = items[0]['Name']
