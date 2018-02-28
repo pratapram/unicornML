@@ -1,7 +1,3 @@
-	var URLAPIID = "zejy1hx0p0";
-	var URLAWSRegion = "execute-api.us-west-2.amazonaws.com";
-	var URLStage="test";
-
 	// get event questions for unicorn feedback
 	function getfeedbacksfrombackend() {
 		console.info("unicornFeedback - in getfeedbacksfrombackend()");
@@ -14,7 +10,7 @@
 			xmlDocRef.onload = buildfeedbacktable ;
 		}
 		// get feedback from backend
-		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "getallcontents"
+        var requestPage = _config.api.invokeUrl + "/getallcontents"
 		console.info("unicornFeedback - in getfeedbacksfrombackend() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
@@ -37,10 +33,11 @@
 		console.info("checked checkbox IDs are: " + checkedValue);
 
 		//predict sentiment and update database in the backend
-		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "predictsentiment?Id=" + checkedValue
+        var requestPage = _config.api.invokeUrl + "/predictsentiment?Id=" + checkedValue
 		console.info("unicornFeedback - in getfeedbacksfrombackend() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
+        window.location.replace("unicornfeedback.html");
 
 	} //end of predictsentiment() function
 
@@ -49,6 +46,7 @@
 		var eventData = xmlDocRef.responseText;
 		var buttons = "<button type=\"button\" onclick=\"predictsentiment()\">Predict Sentiment</button> ";
 		buttons += "<button type=\"button\">Identify Gender</button> ";
+        buttons += "<br><br><button type=\"button\" onclick=\"window.location.replace('enterfeedback.html')\">Enter a New Customer Feedback</button> ";
 		
 		myObj = JSON.parse(eventData);
 		console.info("unicornFeedback - in buildfeedbacktable eventData = " + eventData);
@@ -56,7 +54,7 @@
 
 		try{
 			for (i = 0; i < myObj.length; i++) {
-				name = myObj[i].Name;
+				name = myObj[i].FirstName + " " + myObj[i].LastName;
 				feedback =  (myObj[i].Feedback==null? "" : myObj[i].Feedback) ;
 				sentiment = (myObj[i].Sentiment==null? "" : myObj[i].Sentiment);
 				gender = (myObj[i].Gender==null? "" : myObj[i].Gender); 
@@ -92,10 +90,9 @@
 			xmlDocRef = new XMLHttpRequest();
 		}
 
-		var requestPage = "https://" + URLAPIID + "." + URLAWSRegion + "/" + URLStage + "/" + "enterfeedback?FirstName=" + firstname + "&LastName=" + lastname + "&Feedback=" + feedback
+        var requestPage = _config.api.invokeUrl + "/enterfeedback?FirstName=" + firstname + "&LastName=" + lastname + "&Feedback=" + feedback
 		console.info("unicornFeedback - in submitFeedback() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
 		window.location.replace("unicornfeedback.html");
 	}
-
