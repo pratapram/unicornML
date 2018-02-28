@@ -20,6 +20,7 @@
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <script type="text/javascript" src="js/unicornFeedback.js"></script>
+  <script src="js/config.js"></script>
   <title>Enter Feedback</title>
  </head>
  <body>
@@ -29,8 +30,10 @@
 			 <form >
 			  First name: <input type="text" name="fname"><br>
 			  Last name: <input type="text" name="lname"><br>
-			  Feedback: <textarea rows="4" cols="50" name="feedback"></textarea> 
+			  Feedback: <textarea rows="4" cols="50" name="feedback"></textarea>
+              <br>
 			  <input type="button" value="Submit" onClick="submitFeedback(this.form)">
+              <input type="button" value="Cancel" onClick="window.location.replace('unicornfeedback.html')">
 			</form> 
 			
 			</div>
