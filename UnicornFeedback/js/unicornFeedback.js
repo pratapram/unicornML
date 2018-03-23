@@ -34,18 +34,42 @@
 
 		//predict sentiment and update database in the backend
         var requestPage = _config.api.invokeUrl + "/predictsentiment?Id=" + checkedValue
-		console.info("unicornFeedback - in getfeedbacksfrombackend() Sending Request= " + requestPage);
+		console.info("unicornFeedback - in predictsentiment() Sending Request= " + requestPage);
 		xmlDocRef.open( "GET", requestPage, true );
 		xmlDocRef.send( null );
         window.location.replace("unicornfeedback.html");
 
 	} //end of predictsentiment() function
 
+	function predictgender() {
+		var checkedValue = ""; 
+		var inputElements = document.getElementsByClassName('selectedCb');
+		for(var i=0; inputElements[i]; ++i){
+			  if(inputElements[i].checked){
+				   checkedValue += inputElements[i].value + ",";
+			  }
+		}
+
+		var lastChar = checkedValue.charAt(checkedValue.length -1); 
+		if (lastChar == ','){
+			checkedValue = checkedValue.slice(0, -1);
+		}
+
+		console.info("checked checkbox IDs are: " + checkedValue);
+
+		//predict sentiment and update database in the backend
+        var requestPage = _config.api.invokeUrl + "/predictgender?Id=" + checkedValue
+		console.info("unicornFeedback - in predictgender() Sending Request= " + requestPage);
+		xmlDocRef.open( "GET", requestPage, true );
+		xmlDocRef.send( null );
+        window.location.replace("unicornfeedback.html");
+	} //endof predictgender() function
+		
 	function buildfeedbacktable() {
 		if ( xmlDocRef.readyState != 4 ) return ;
 		var eventData = xmlDocRef.responseText;
 		var buttons = "<button type=\"button\" onclick=\"predictsentiment()\">Predict Sentiment</button> ";
-		buttons += "<button type=\"button\">Identify Gender</button> ";
+		buttons += "<button type=\"button\" onclick=\"predictgender()\">Identify Gender</button> ";
         buttons += "<br><br><button type=\"button\" onclick=\"window.location.replace('enterfeedback.html')\">Enter a New Customer Feedback</button> ";
 		
 		myObj = JSON.parse(eventData);

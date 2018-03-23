@@ -1,6 +1,6 @@
 var _config = {
     api: {
-        invokeUrl: 'https://ax0at7i893.execute-api.us-east-1.amazonaws.com/test'//'Base URL of your API including the stage',
+        invokeUrl: 'https://zejy1hx0p0.execute-api.us-west-2.amazonaws.com/test'//'Base URL of your API including the stage',
     }
 };
     
