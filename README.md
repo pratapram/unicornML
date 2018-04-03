@@ -1,16 +1,3 @@
-# unicornML
-
-This is a repository to hold artefacts for the AWS workshop
-
-Files:
-The sagemaker notebook: gender-classifier-golden.ipynb
-
-The sagemaker python file: gender-keras-2.py
-
-The lambda function to invoke sagemaker endpoint: lambda_sagemaker_invoke.py
-
-
-
 # Serverless NLP Workshop
 
 In this workshop you'll deploy a voice-of-the-customer application that enables users to submit feedback about your product. The application will present users with an HTML based user interface for providing feeback and will interface on the backend with a RESTful web service to submit the request. The internal facing application will help the business owners to analyze the feedback provided using Natural Language Processing (NLP) techniques.
@@ -48,3 +35,14 @@ This workshop is broken up into multiple modules. You must complete each module 
 3. [Create your own classifier](3_ServerlessBackend)
 
 After you have completed the workshop you can delete all of the resources that were created by following the [cleanup guide](9_CleanUp).
+
+# unicornML
+
+This is a repository to hold artefacts for the AWS workshop
+
+Files:
+The sagemaker notebook: gender-classifier-golden.ipynb
+
+The sagemaker python file: gender-keras-2.py
+
+The lambda function to invoke sagemaker endpoint: lambda_sagemaker_invoke.py
