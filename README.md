@@ -30,9 +30,9 @@ You will need a local text editor for making minor updates to configuration file
 
 This workshop is broken up into multiple modules. You must complete each module before proceeding to the next, however, modules 1 and 2 have AWS CloudFormation templates available that you can use to launch the necessary resources without manually creating them yourself if you'd like to skip ahead.
 
-1. [Creating a VOC application framework](1_StaticWebHosting)
-2. [Adding sentiment analysis](2_UserManagement)
-3. [Create your own classifier](3_ServerlessBackend)
+1. [Creating a VOC application framework](1_VocFramework)
+2. [Adding sentiment analysis](2_SentimentAnalysis)
+3. [Create your own NLP classifier](3_NLPClassifier)
 
 After you have completed the workshop you can delete all of the resources that were created by following the [cleanup guide](9_CleanUp).
 
