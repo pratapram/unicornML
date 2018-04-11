@@ -188,7 +188,7 @@
         "WebsiteURL": {
             "Description" : "URL for Unicorn Feedback website",
             "Value": {
-                "Fn::GetAtt" : [ "WebsiteBucket" , "WebsiteURL" ]
+                "Fn::Join": ["/", [{"Fn::GetAtt" : [ "WebsiteBucket" , "WebsiteURL" ]}, "unicornfeedback.html"]]
             }
         }         
     }    
