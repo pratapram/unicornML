@@ -119,7 +119,7 @@ For this section you will test the function that you built using the AWS Lambda 
 
 1. Copy and paste the following test event into the editor:
 
-	    ```JSON
+	```JSON
     {
         "path": "/ride",
         "httpMethod": "POST",
@@ -150,6 +150,7 @@ For this section you will test the function that you built using the AWS Lambda 
 1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
 
 1. Verify that the execution succeeded and that the function result looks like the following:
+
 ```JSON
 {
     "statusCode": 201,
