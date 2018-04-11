@@ -16,4 +16,20 @@ Each of the following sections provide an implementation overview and detailed, 
 
 If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
 
-1. Create an IAM Role for your Lambda function 
+### 1. Create an IAM Role for your Lambda function 
+
+#### Background
+
+Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs and detect sentiment by Comprehend.
+
+#### High-Level Instructions
+
+Use the IAM console to create a new role. Name it `NLPWLambda` and select AWS Lambda for the role type. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and detect sentiment by Comprehend.
+Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1.	From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
+1.	Select **Roles** in the left navigation bar and then choose **Create new role**.
+1.	Select **Lambda** for the role type from the **AWS service** group, then click **Next: Permissions**
