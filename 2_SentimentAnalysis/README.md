@@ -85,3 +85,25 @@ Make sure to configure your function to use the `NLPWLambda` IAM role you create
 1. Choose on **Services** then select **Lambda** in the Compute section.
 
 1. Click **Create function**.
+
+1. Keep the default **Author from scratch** card selected.
+
+1. Enter `DetectSentiment` in the **Name** field.
+
+1. Select **Python 3.6** for the **Runtime**.
+
+1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
+
+1. Select `NLPWLambda` from the **Existing Role** dropdown.
+    ![Create Lambda function screenshot](images/create-lambda-function.png)
+
+1. Click on **Create function**.
+
+1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [DetectSentiment.py](DetectSentiment.py).
+    ![Create Lambda function screenshot](images/create-lambda-function-code.png)
+
+1. Click **"Save"** in the upper right corner of the page.
+
+</p></details>
+
+## Implementation Validation
