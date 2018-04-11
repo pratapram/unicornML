@@ -42,4 +42,4 @@ Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to g
 1.	Choose **Create role**.
 1.	Type `NLPWLambda` into the filter box on the Roles page and choose the role you just created.
 1.	On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy. 
-	![Inline policies screenshot](../images/inline-policies.png)
+	![Inline policies screenshot](images/inline-policies.png)
