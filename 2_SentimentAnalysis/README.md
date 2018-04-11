@@ -107,3 +107,59 @@ Make sure to configure your function to use the `NLPWLambda` IAM role you create
 </p></details>
 
 ## Implementation Validation
+
+For this section you will test the function that you built using the AWS Lambda console. In the next section you will add a REST API with API Gateway so you can invoke your function from the browser-based application that you deployed in the first module.
+
+1. From the main edit screen for your function, select **Configure test event** from the the **Select a test event...** dropdown.
+    ![Configure test event](images/configure-test-event.png)
+	
+1. Keep **Create new test event** selected.
+
+1. Enter `TestRequestEvent` in the **Event name** field
+
+1. Copy and paste the following test event into the editor:
+
+	    ```JSON
+    {
+        "path": "/ride",
+        "httpMethod": "POST",
+        "headers": {
+            "Accept": "*/*",
+            "Authorization": "eyJraWQiOiJLTzRVMWZs",
+            "content-type": "application/json; charset=UTF-8"
+        },
+        "queryStringParameters": null,
+        "pathParameters": null,
+        "requestContext": {
+            "authorizer": {
+                "claims": {
+                    "cognito:username": "the_username"
+                }
+            }
+        },
+        "body": "{\"PickupLocation\":{\"Latitude\":47.6174755835663,\"Longitude\":-122.28837066650185}}"
+    }
+    ```
+
+    ![Configure test event](images/configure-test-event-2.png)
+	
+1. Click **Create**.
+
+1. On the main function edit screen click **Test** with `TestRequestEvent` selected in the dropdown.   
+
+1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
+
+1. Verify that the execution succeeded and that the function result looks like the following:
+```JSON
+{
+    "statusCode": 201,
+    "body": "{\"RideId\":\"SvLnijIAtg6inAFUBRT+Fg==\",\"Unicorn\":{\"Name\":\"Rocinante\",\"Color\":\"Yellow\",\"Gender\":\"Female\"},\"Eta\":\"30 seconds\"}",
+    "headers": {
+        "Access-Control-Allow-Origin": "*"
+    }
+}
+```
+
+After you have successfully tested your new function using the Lambda console, you can move on to the next section.
+
+### 3. Create a REST API
