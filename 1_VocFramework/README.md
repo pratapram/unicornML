@@ -7,3 +7,9 @@ The application architecture uses [AWS Lambda](https://aws.amazon.com/lambda/), 
 See the diagram below for a depiction of the complete architecture.
 
 ![Unicorn ML Application Architecture](images/unicornml-complete-architecture.png)
+
+# Module 1: VOC Web Application Framework with Amazon S3
+
+In this module you'll configure Amazon Simple Storage Service (S3) to host the static resources for your web application. In subsequent modules you'll add dynamic functionality to these pages using JavaScript to call remote RESTful APIs built with AWS Lambda and Amazon API Gateway.
+
+If you're already comfortable working with Amazon S3, or you just want to skip ahead to working with Lambda and API Gateway, you can launch one of these AWS CloudFormation templates in the Region of your choice to build the necessary resources automatically.
