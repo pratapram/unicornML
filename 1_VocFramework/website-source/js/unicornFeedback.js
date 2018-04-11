@@ -73,11 +73,11 @@
 		buttons += "<button type=\"button\" onclick=\"identifygender()\">Identify Gender</button> ";
         buttons += "<br><br><button type=\"button\" onclick=\"window.location.replace('enterfeedback.html')\">Enter a New Customer Feedback</button> ";
 		
-		myObj = JSON.parse(eventData);
 		console.info("unicornFeedback - in buildfeedbacktable eventData = " + eventData);
 		mainTable = "<table><col width=2%><col width=20%><col width=60%><col width=9%><col width=9%><tr><th></th><th>Name</th><th><center>Feedback</center></th><th>Sentiment</th><th>Gender</th></tr>";
 
 		try{
+			myObj = JSON.parse(eventData);
 			for (i = 0; i < myObj.length; i++) {
 				name = myObj[i].FirstName + " " + myObj[i].LastName;
 				feedback =  (myObj[i].Feedback==null? "" : myObj[i].Feedback) ;
