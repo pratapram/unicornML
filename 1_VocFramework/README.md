@@ -10,9 +10,11 @@ See the diagram below for a depiction of the complete architecture.
 
 # Module 1: VOC Web Application Framework with Amazon S3
 
-In this module you'll configure Amazon Simple Storage Service (S3) to host the static resources for your web application. In subsequent modules you'll add dynamic functionality to these pages using JavaScript to call remote RESTful APIs built with AWS Lambda and Amazon API Gateway.
+In this module you'll configure Amazon Simple Storage Service (S3) to host the static resources for your web application. In addition you'll also create the serverless framework needed to persist data from the eront-end. These includes a DynamoDB table to store customers' feedbacks, and API Gateway deployment with methods to store and retrieve data, and associating Lambda functions to facilitate this.
 
-If you're already comfortable working with Amazon S3, or you just want to skip ahead to working with Lambda and API Gateway, you can launch one of these AWS CloudFormation templates in the Region of your choice to build the necessary resources automatically.
+In subsequent modules you'll add AI/ML functionalities to this application, using Amazon Comprehend to analyze users' sentiments, and a hosted endpoint on SageMaker to identify users' gender.
+
+If you're already comfortable hosting webapplication on Amazon S3 and using APi Gateway nd Lambda to add data persistance and retrieval capability to the webapplication via Javascript, or you just want to skip ahead to satrt working with Amazon Comprehend and AWS SageMaker, you can launch one of these AWS CloudFormation templates in the Region of your choice to build the necessary resources automatically.
 
 Region| Launch
 ------|-----
