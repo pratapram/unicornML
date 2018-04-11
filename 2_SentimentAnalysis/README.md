@@ -31,15 +31,57 @@ Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to g
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
 1.	From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
+
 1.	Select **Roles** in the left navigation bar and then choose **Create new role**.
+
 1.	Select **Lambda** for the role type from the **AWS service** group, then click **Next: Permissions**
 
     **Note:** Selecting a role type automatically creates a trust policy for your role that allows AWS services to assume this role on your behalf. If you were creating this role using the CLI, AWS CloudFormation or another mechanism, you would specify a trust policy directly.
 
 1.	Begin typing `AWSLambdaBasicExecutionRole` in the Filter text box and check the box next to that role.	
+
 1.	Click **Next: Review**.
+
 1.	Enter `NLPWLambda` for the **Role name**.
+
 1.	Choose **Create role**.
+
 1.	Type `NLPWLambda` into the filter box on the Roles page and choose the role you just created.
+
 1.	On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy. 
 	![Inline policies screenshot](images/inline-policies.png)
+
+1. Select **Choose a service**.
+
+1. Begin typing `Comprehend` into the search box labeled **Find a service** and select **Comprehend** when it appears. 
+	![Select policy service](images/select-policy-service.png)
+	
+1. Choose **Select actions**.
+
+1.	Begin typing `DetectSentiment` into the search box labeled **Filter actions** and check the box next to **DetectSentiment** when it appears.
+
+1. Choose **Review Policy**.
+
+1. Enter `ComprehendDetectSentiment` for the policy name and choose **Create policy**.
+    ![Review Policy](images/review-policy.png)
+	
+</p></details>
+
+### 2. Create a Lambda Function 
+
+#### Background
+
+AWS Lambda will run your code in response to events in this case from API Gateway (which we will cover in the next section). In this step you'll build the core function that will process API requests (via API Gateway) from the web application to detect a sentiment of a feedback text. In the next section you'll use Amazon API Gateway to create a RESTful API that will expose an HTTP endpoint that can be invoked from your users' browsers. You'll then connect the Lambda function you create in this step to that API in order to create a fully functional backend for your web application.
+
+#### High-Level Instructions
+
+Use the AWS Lambda console to create a new Lambda function called `DetectSentiment` that will process the requests. 
+
+Make sure to configure your function to use the `NLPWLambda` IAM role you created in the previous section.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. Choose on **Services** then select **Lambda** in the Compute section.
+
+1. Click **Create function**.
