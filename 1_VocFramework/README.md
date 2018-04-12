@@ -153,3 +153,42 @@ EU (Ireland) | [![Launch Module 1 in eu-west-1](http://docs.aws.amazon.com/AWSCl
 1. Wait for the `nlp-copy-objects` stack to reach a status of `CREATE_COMPLETE`.
 
 </p></details>
+
+### 3. Add a Bucket Policy to Allow Public Reads
+
+You can define who can access the content in your S3 buckets using a bucket policy. Bucket policies are JSON documents that specify what principals are allowed to execute various actions against the objects in your bucket.
+
+#### High-Level Instructions
+
+You will need to add a bucket policy to your new Amazon S3 bucket to let anonymous users view your site. By default your bucket will only be accessible by authenticated users with access to your AWS account.
+
+See [this example](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-2) of a policy that will grant read only access to anonymous users. This example policy allows anyone on the Internet to view your content. The easiest way to update a bucket policy is to use the console. Select the bucket, choose the permission tab and then select Bucket Policy.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the S3 console, select the name of the bucket you created in section 1.
+
+1. Choose the **Permissions** tab, then choose **Bucket Policy**.
+
+1. Enter the following policy document into the bucket policy editor replacing `YOUR_BUCKET_NAME` with the name of the bucket you created in section 1:
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+            }
+        ]
+    }
+    ```
+
+    ![Update bucket policy screenshot](images/update-bucket-policy.png)
+
+1. Choose **Save** to apply the new policy.
+
+</p></details>
