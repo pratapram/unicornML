@@ -172,7 +172,7 @@ Create a new resource called `/detectsentiment` within your API. Then create a G
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
-1. In the left nav, click on **Resources** under your VOCApp API.
+1. In the left nav, click on **Resources** under your NLPWorkshopAPI.
 
 1. From the **Actions** dropdown select **Create Resource**.
 
@@ -227,3 +227,75 @@ Create a new resource called `/detectsentiment` within your API. Then create a G
 </p></details>
 
 ### 4. Deploy Your API
+
+From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use prod for the stage name.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the **Actions** drop-down list select **Deploy API**.
+
+1. Select **[New Stage]** in the **Deployment stage** drop-down list.
+
+1. Enter `prod` for the **Stage Name**.
+
+1. Choose **Deploy**.
+
+1. Note the **Invoke URL**. You will use it in the next section.
+
+</p></details>
+
+### 5. Update the Website Config
+
+Update the /js/config.js file in your website deployment to include the invoke URL of the stage you just created. You should copy the invoke URL directly from the top of the stage editor page on the Amazon API Gateway console and paste it into the _config.api.invokeUrl key of your sites /js/config.js file. 
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+If you completed module 1 manually, you can edit the `config.js` file you have saved locally. If you used the AWS CloudFormation template, you must first download the `config.js` file from your S3 bucket. To do so, visit `/js/config.js` under the base URL for your website and choose **File**, then choose **Save Page As** from your browser.
+
+1. Open the config.js file in a text editor.
+
+1. Update the **invokeUrl** setting under the **api** key in the config.js file. Set the value to the **Invoke URL** for the deployment stage your created in the previous section.
+
+    An example of a complete `config.js` file is included below. Note, the actual values in your file will be different. Replace `<your_API_Id>` with the API Id you create in the previous step. Also replace the stage name if it is different from `prod`. 
+
+    ```JavaScript
+    var _config = {
+		api: {
+			invokeUrl: 'https://<your_API_Id>.execute-api.us-west-2.amazonaws.com/prod'//'Base URL of your API including the stage',
+		}
+	}; 
+    ```
+
+1. Save your changes locally.
+
+1. In the AWS Management Console, choose **Services** then select **S3** under Storage.
+
+1. Choose your website bucket and then browse to the `js` key prefix.
+
+1. Choose **Upload**.
+
+1. Choose **Add files**, select the local copy of `config.js` and then click **Next**.
+
+1. Choose **Next** without changing any defaults through the `Set permissions` and `Set properties` sections.
+
+1. Choose **Upload** on the `Review` section.
+
+</p></details>
+
+## Implementation Validation
+
+**Note:** It's possible that you will see a delay between updating the config.js file in your S3 bucket and when the updated content is visible in your browser. You should also ensure that you clear your browser cache before executing the following steps. 
+
+1.	Visit `/enterfeedback.html` under your website domain.
+
+1.	Enter a test **First Name**, **Last Name** and **Feedback**.
+
+1.	Click **Submit** button. It will redirect to a list of customer names and feedback.
+
+1.	Choose checkbox of the feedback you want to detect sentiment.
+
+1.	Click on **Predict Sentiment** button. It will refresh the page and load the result of the sentiment detection.
+
+Congratulations, you have completed the module 2 of the NLP Workshop! You are ready to move on to the [module 3: NLP Classifier](../README.md#Modules).
