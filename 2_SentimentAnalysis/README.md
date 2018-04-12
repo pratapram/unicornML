@@ -163,4 +163,67 @@ For this section you will test the function that you built using the AWS Lambda 
 
 After you have successfully tested your new function using the Lambda console, you can move on to the next section.
 
-### 3. Create a REST API
+### 3. Add a Resource and Method to the existing REST API
+
+API Gateway calls the Lambda function we created at the previous step. Create a GET method that invokes the Lambda function and passes the IDs of each user feedback as an event. 
+
+Create a new resource called `/detectsentiment` within your API. Then create a GET method for that resource and configure it to use a Lambda proxy integration backed by the `DetectSentiment` function you created in the previous section.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the left nav, click on **Resources** under your VOCApp API.
+
+1. From the **Actions** dropdown select **Create Resource**.
+
+1. Enter `detectsentiment` as the **Resource Name**.
+
+1. Ensure the **Resource Path** is set to `detectsentiment`.
+
+1. Select **Enable API Gateway CORS** for the resource.
+
+1. Click **Create Resource**.
+
+    ![Create resource screenshot](images/create-resource.png)
+
+1. With the newly created `/detectsentiment` resource selected, from the **Action** dropdown select **Create Method**.
+
+1. Select `GET` from the new dropdown that appears, then **click the checkmark**.
+
+    ![Create method screenshot](images/create-method.png)
+
+1. Select **Lambda Function** for the integration type.
+
+1. Check the box for **Use Lambda Proxy integration**.
+
+1. Select the Region you are using for **Lambda Region**.
+
+1. Enter the name of the function you created in the previous module, `DetectSentiment`, for **Lambda Function**.
+
+1. Choose **Save**. Please note, if you get an error that you function does not exist, check that the region you selected matches the one you used in the previous module.
+
+    ![API method integration screenshot](images/api-integration-setup.png)
+
+1. When prompted to give Amazon API Gateway permission to invoke your function, choose **OK**.
+
+1. Choose on the **Method Request** card.
+
+1. Open the **URL Query String Parameters**, and click on **Add query string** link. Enter Name as `Id` and then **click the checkmark**.
+
+	![API method request 1 screenshot](images/api-query_string-setup.png)
+
+1.	Go back to the previous screen and choose **Integration Request** card.
+
+1.	Scroll down to see Body Mapping Templates and open the section by clicking on the arrow on the left side. 
+
+1.	Click on **Add mapping template** link and type `application/json` in the textbox.
+
+	![API method request 2 screenshot](images/api-body_mapping--template-setup.png)
+
+1.	When you save it by clicking on the checkmark, it will bring up a text area. Type `{ "ID": "$input.params('Id')" }` into it and press the save button. 
+
+	![API method request 3 screenshot](images/api-body_mapping-template.png)
+
+</p></details>
+
+### 4. Deploy Your API
