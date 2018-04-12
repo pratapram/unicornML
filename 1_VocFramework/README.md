@@ -379,7 +379,7 @@ Make sure to configure your function to use the `VOCLambdaRole` IAM role you cre
 1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
 
 1. Select `VOCLambdaRole` from the **Existing Role** dropdown.
-    ![Create Lambda function screenshot](../images/create-enterfeedback-lambda.png
+    ![Create Lambda function screenshot](../images/create-enterfeedback-lambda.png)
 
 1. Click on **Create function**.
 
