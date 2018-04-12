@@ -350,3 +350,42 @@ Create a custom inline policy for your role that allows all `dynamodb:*`, `s3:*`
     ![Review Policy](images/review-policy.png)
 
 </p></details>
+
+### 7. Create a Lambda Function for Writing Feedbacks into DynamoDB
+
+#### Background
+
+AWS Lambda will run your code in response to events such as an HTTP request. In this step and the next you'll build the core functions that will process API requests from the web application to submit a feedback and list all submitted feedbacks. In the next step you'll use Amazon API Gateway to create a RESTful API that will expose an HTTP endpoint that can be invoked from your users' browsers. You'll then connect the Lambda functions you create in this step and the next to that API in order to create a fully functional backend for your web application.
+
+#### High-Level Instructions
+
+Use the AWS Lambda console to create a new Lambda function called `EnterCustomerFeedback` that will process the API request submitted with customer name and feedback. Use the provided [entercustomerfeedback.py](functions/entercustomerfeedback.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
+
+Make sure to configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. Choose on **Services** then select **Lambda** in the Compute section.
+
+1. Click **Create function**.
+
+1. Keep the default **Author from scratch** card selected.
+
+1. Enter `EnterCustomerFeedback` in the **Name** field.
+
+1. Select **Python 3.6** for the **Runtime**.
+
+1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
+
+1. Select `VOCLambdaRole` from the **Existing Role** dropdown.
+    ![Create Lambda function screenshot](../images/create-enterfeedback-lambda.png
+
+1. Click on **Create function**.
+
+1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [entercustomerfeedback.py](functions/entercustomerfeedback.py).
+    ![Create Lambda function screenshot](images/enterfeedback-lambda-code.png)
+
+1. Click **"Save"** in the upper right corner of the page.
+
+</p></details>
