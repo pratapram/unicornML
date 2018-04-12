@@ -219,3 +219,15 @@ Using the console, enable static website hosting. You can do this on the Propert
     ![Enable website hosting screenshot](images/enable-website-hosting.png)
 
 </p></details>
+
+### Implementation Validation
+
+After completing these implementation steps you should be able to access your static website by visiting the the website endpoint URL for your S3 bucket.
+
+Visit your website's base URL (this is the URL you noted in section 4) in the browser of your choice. You should see the Voice of the Customer Application home page displayed. If you need to lookup the base URL, visit the S3 console, select your bucket and then click the **Static Web Hosting** card on the **Properties** tab.
+
+If the page renders correctly (see below for an example screenshot), you should see an empty table containing four columns - Name, feedback, Sentiment and Gender.
+
+Since you haven't added any database to persist any customer feedback, the table will remain empty, until you add the DynamoDB table and the API Gateway methods alongwith Lambda functions to save and read data from the table.
+
+![VOC Application homepage screenshot](images/voc-webapp-homepage-empty.png)
