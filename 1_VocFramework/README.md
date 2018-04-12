@@ -260,3 +260,94 @@ After you've created the table, note the ARN for use in the next step.
 1. Scroll to the bottom of the Overview section of your new table and note the **ARN**. You will use this in the next section.
 
 </p></details>
+
+### 6. Create an IAM Role for Your Lambda function
+
+#### Background
+
+Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs, access to write items to your DynamoDB table, and permission to read and write objects from S3 bucket.
+
+#### High-Level Instructions
+
+Use the IAM console to create a new role. Name it `VOCLambdaRole` and select AWS Lambda for the role type. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and put items to DynamoDB table and S3 bucket.
+
+Create a custom inline policy for your role that allows all `dynamodb:*`, `s3:*`, and `logs:*` actions.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
+
+1. Select **Roles** in the left navigation bar and then choose **Create role**.
+
+1. From the **AWS service** group, under the section **Choose the service that will use this role**, select **Lambda** 
+
+1. **Lambda** appears under the section **Select your use case**. Select the sole use case **Lambda**, as this allows lambda functions to call AWS services on your behalf. Then click **Next: Permissions**
+
+    **Note:** Selecting a role type automatically creates a trust policy for your role that allows AWS services to assume this role on your behalf. If you were creating this role using the CLI, AWS CloudFormation or another mechanism, you would specify a trust policy directly.
+
+1. Begin typing `AWSLambdaBasicExecutionRole` in the **Filter** text box and check the box next to that role.
+
+1. Click **Next: Review**.
+
+1. Enter `VOCLambdaRole` for the **Role name**.
+
+1. Choose **Create role**.
+
+1. Type `VOCLambdaRole` into the filter box on the Roles page and choose the role you just created.
+
+1. On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy.
+    ![Inline policies screenshot](images/inline-policies.png)
+
+1. Select **JSON** tab.
+
+1. Enter the following policy document into the policy editor :
+
+    ```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:ListTables",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:ListStreams",
+                "comprehend:DetectSentiment",
+                "sagemaker:InvokeEndpoint",
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectVersionAcl",
+                "s3:DeleteObject",
+                "s3:DeleteObjectVersion",
+                "s3:CopyObject",
+                "xray:PutTraceSegments"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+    ```
+
+    ![Inline policy editor screenshot](images/inline-policy-editor.png)
+
+1. Choose **Review Policy**.
+
+1. Make sure appropriate permissions for the services as listed above, are shown in the review screen.
+
+1. Enter `VOCLAmbdaAllAccess` for the policy name and choose **Create policy**.
+    ![Review Policy](images/review-policy.png)
+
+</p></details>
