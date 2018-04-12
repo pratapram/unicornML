@@ -192,3 +192,30 @@ See [this example](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket
 1. Choose **Save** to apply the new policy.
 
 </p></details>
+
+### 4. Enable Website Hosting
+
+By default objects in an S3 bucket are available via URLs with the structure http://<Regional-S3-prefix>.amazonaws.com/<bucket-name>/<object-key>. In order to serve assets from the root URL (e.g. /unicornfeedback.html), you'll need to enable website hosting on the bucket. This will make your objects available at the AWS Region-specific website endpoint of the bucket: <bucket-name>.s3-website-<AWS-region>.amazonaws.com
+
+You can also use a custom domain for your website. Setting up a custom domain is not covered in this workshop, but you can find detailed instructions in our [documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
+
+#### High-Level Instructions
+
+Using the console, enable static website hosting. You can do this on the Properties tab after you've selected the bucket. Set `unicornfeedback.html` as the index document, and leave the error document blank. See the documentation on [configuring a bucket for static website hosting](https://docs.aws.amazon.com/AmazonS3/latest/dev/HowDoIWebsiteConfiguration.html) for more details.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the bucket detail page in the S3 console, choose the **Properties** tab.
+
+1. Choose the **Static website hosting** card.
+
+1. Select **Use this bucket to host a website** and enter `unicornfeedback.html` for the Index document. Leave the other fields blank.
+
+1. Note the **Endpoint** URL at the top of the dialog before choosing **Save**. You will use this URL throughout the rest of the workshop to view your web application. From here on this URL will be referred to as your website's base URL.
+
+1. Click **Save** to save your changes.
+
+    ![Enable website hosting screenshot](images/enable-website-hosting.png)
+
+</p></details>
