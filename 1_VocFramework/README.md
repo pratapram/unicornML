@@ -302,43 +302,42 @@ Create a custom inline policy for your role that allows all `dynamodb:*`, `s3:*`
 1. Select **JSON** tab.
 
 1. Enter the following policy document into the policy editor :
-
     ```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "dynamodb:BatchGetItem",
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:ListTables",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:DescribeStream",
-                "dynamodb:GetRecords",
-                "dynamodb:GetShardIterator",
-                "dynamodb:ListStreams",
-                "comprehend:DetectSentiment",
-                "sagemaker:InvokeEndpoint",
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:PutObjectAcl",
-                "s3:PutObjectVersionAcl",
-                "s3:DeleteObject",
-                "s3:DeleteObjectVersion",
-                "s3:CopyObject",
-                "xray:PutTraceSegments"
-            ],
-            "Resource": "*",
-            "Effect": "Allow"
-        }
-    ]
-}
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": [
+                    "dynamodb:BatchGetItem",
+                    "dynamodb:DescribeTable",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:DeleteItem",
+                    "dynamodb:ListTables",
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:DescribeStream",
+                    "dynamodb:GetRecords",
+                    "dynamodb:GetShardIterator",
+                    "dynamodb:ListStreams",
+                    "comprehend:DetectSentiment",
+                    "sagemaker:InvokeEndpoint",
+                    "s3:ListBucket",
+                    "s3:GetObject",
+                    "s3:PutObject",
+                    "s3:PutObjectAcl",
+                    "s3:PutObjectVersionAcl",
+                    "s3:DeleteObject",
+                    "s3:DeleteObjectVersion",
+                    "s3:CopyObject",
+                    "xray:PutTraceSegments"
+                ],
+                "Resource": "*",
+                "Effect": "Allow"
+            }
+        ]
+    }
     ```
 
     ![Inline policy editor screenshot](images/inline-policy-editor.png)
