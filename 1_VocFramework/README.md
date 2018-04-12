@@ -231,3 +231,32 @@ If the page renders correctly (see below for an example screenshot), you should 
 Since you haven't added any database to persist any customer feedback, the table will remain empty, until you add the DynamoDB table and the API Gateway methods alongwith Lambda functions to save and read data from the table.
 
 ![VOC Application homepage screenshot](images/voc-webapp-homepage-empty.png)
+
+### 5. Create an Amazon DynamoDB Table
+
+Use the Amazon DynamoDB console to create a new DynamoDB table. Call your table `UnicornCustomerFeedback` and give it a partition key called `ID` and a sort key called `PostedTime`, both with type String. The table name, partition key, and sort keys are case sensitive. Make sure you use the exact IDs provided. Use the defaults for all other settings.
+
+After you've created the table, note the ARN for use in the next step.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the AWS Management Console, choose **Services** then select **DynamoDB** under Databases.
+
+1. Choose **Create table**.
+
+1. Enter `UnicornCustomerFeedback` for the **Table name**. This field is case sensitive.
+
+1. Enter `ID` for the **Partition key** and select **String** for the key type. This field is case sensitive.
+
+1. Check the **Add sort key** box.
+
+1. Enter `PostedTime` for the sort key and select **String** for the key type. This field is case sensitive.
+
+1. Check the **Use default settings** box and choose **Create**.
+
+    ![Create table screenshot](images/ddb-create-table.png)
+
+1. Scroll to the bottom of the Overview section of your new table and note the **ARN**. You will use this in the next section.
+
+</p></details>
