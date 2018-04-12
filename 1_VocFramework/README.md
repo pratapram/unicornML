@@ -107,3 +107,49 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
     ![Create bucket screenshot](images/create-bucket.png)
 
 </p></details>
+
+### 2. Upload Content
+
+Upload the website assets for this module to your S3 bucket. You can use the AWS Management Console (requires Google Chrome browser), AWS CLI, or the provided CloudFormation template to complete this step. If you already have the AWS CLI installed and configured on your local machine, we recommend using that method. Otherwise, use the console if you have the latest version of Google Chrome installed.
+
+<details>
+<summary><strong>CLI step-by-step instructions (expand for details)</strong></summary><p>
+
+If you already have the CLI installed and configured, you can use it to copy the necessary web assets from `s3://nlp-workshop/website-source` to your bucket.
+
+Execute the following command making sure to replace `YOUR_BUCKET_NAME` with the name you used in the previous section and `YOUR_BUKET_REGION` with the region code (e.g. us-east-2) where you created your bucket.
+
+    aws s3 sync s3://nlp-workshop/website-source s3://YOUR_BUCKET_NAME --region YOUR_BUCKET_REGION
+
+If the command was successful, you should see a list of objects that were copied to your bucket.
+</p></details>
+
+<details>
+<summary><strong>CloudFormation step-by-step instructions (expand for details)</strong></summary><p>
+
+If you are unable to use either of the previous methods you can launch the provided CloudFormation template in order to copy the necessary assets into your S3 bucket.
+
+Region| Launch
+------|-----
+US East (N. Virginia) | [![Launch Module 1 in us-east-1](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=nlp-copy-objects&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/webapp-copy-objects.json)
+US East (Ohio) | [![Launch Module 1 in us-east-2](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=nlp-copy-objects&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/webapp-copy-objects.json)
+US West (Oregon) | [![Launch Module 1 in us-west-2](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=nlp-copy-objects&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/webapp-copy-objects.json)
+EU (Ireland) | [![Launch Module 1 in eu-west-1](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=nlp-copy-objects&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/webapp-copy-objects.json)
+
+
+1. Click the **Launch Stack** link above for the region where you created your website bucket.
+
+1. Click **Next** on the Select Template page.
+
+1. Enter the name of your S3 bucket (e.g. `nlp-yourname`) for **Website Bucket Name** and click **Next**.
+
+1. On the Options page, leave all the defaults and click **Next**.
+
+1. On the Review page, check the box to acknowledge that CloudFormation will create IAM resources and click **Create**.
+    ![Acknowledge IAM Screenshot](images/cfn-ack-iam.png)
+
+    This template uses a custom resource to copy the static website assets from a central S3 bucket into your own dedicated bucket. In order for the custom resource to write to the new bucket in your account, it must create an IAM role it can assume with those permissions.
+
+1. Wait for the `nlp-copy-objects` stack to reach a status of `CREATE_COMPLETE`.
+
+</p></details>
