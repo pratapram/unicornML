@@ -389,3 +389,42 @@ Make sure to configure your function to use the `VOCLambdaRole` IAM role you cre
 1. Click **"Save"** in the upper right corner of the page.
 
 </p></details>
+
+### 8. Create a Lambda Function for Retrieving Feedbacks from DynamoDB
+
+#### Background
+
+You'll follow the same staeps as above to create a Lambda function that will read all the records in DynamoDB table and return the list. AWS Lambda will run your code in response to events such as an HTTP request. 
+
+#### High-Level Instructions
+
+Use the AWS Lambda console to create a new Lambda function called `GetAllCustomerFeedbacks` that will process the API request submitted with customer name and feedback. Use the provided [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
+
+Make sure to configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. Choose on **Services** then select **Lambda** in the Compute section.
+
+1. Click **Create function**.
+
+1. Keep the default **Author from scratch** card selected.
+
+1. Enter `EnterCustomerFeedback` in the **Name** field.
+
+1. Select **Python 3.6** for the **Runtime**.
+
+1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
+
+1. Select `VOCLambdaRole` from the **Existing Role** dropdown.
+    ![Create Lambda function screenshot](images/create-listfeedbacks-lambda.png)
+
+1. Click on **Create function**.
+
+1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py).
+    ![Create Lambda function screenshot](images/listfeedbacks-lambda-code.png)
+
+1. Click **"Save"** in the upper right corner of the page.
+
+</p></details>
