@@ -82,3 +82,28 @@ You can refer to the [region table](https://aws.amazon.com/about-aws/global-infr
 Once you've chosen a region, you should deploy all of the resources for this workshop there. Make sure you select your region from the dropdown in the upper right corner of the AWS Console before getting started.
 
 ![Region selection screenshot](images/region-selection.png)
+
+### 1. Create an S3 Bucket
+
+Amazon S3 can be used to host static websites without having to configure or manage any web servers. In this step you'll create a new S3 bucket that will be used to host all of the static assets (e.g. HTML, CSS, JavaScript, and image files) for your web application.
+
+#### High-Level Instructions
+
+Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your bucket's name must be globally unique across all regions and customers. We recommend using a name like `nlp-firstname-lastname`. If you get an error that your bucket name already exists, try adding additional numbers or characters until you find an unused name.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the AWS Management Console choose **Services** then select **S3** under Storage.
+
+1. Choose **+Create Bucket**
+
+1. Provide a globally unique name for your bucket such as `nlp-firstname-lastname`.
+
+1. Select the Region you've chosen to use for this workshop from the dropdown.
+
+1. Choose **Create** in the lower left of the dialog without selecting a bucket to copy settings from.
+
+    ![Create bucket screenshot](images/create-bucket.png)
+
+</p></details>
