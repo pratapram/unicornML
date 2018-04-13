@@ -692,3 +692,43 @@ From the Amazon API Gateway console, choose Actions, Deploy API. You'll be promp
 1. Note the **Invoke URL**. You will use it in the next section.
 
 </p></details>
+
+### 12. Update the Website Config
+Update the /js/config.js file in your website deployment to include the invoke URL of the stage you just created. You should copy the invoke URL directly from the top of the stage editor page on the Amazon API Gateway console and paste it into the \_config.api.invokeUrl key of your sites /js/config.js file. 
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+If you completed this module manually, you can download the `config.js` file from your hosting S3 bucket and save it locally. To do so, visit `/js/config.js` under the base URL for your website and choose **File**, then choose **Save Page As** from your browser.
+Note:  
+    **Note:** If you used the AWS CloudFormation template, the template created a custome resource and implemented a Lambda function that replace the API endpoint into the config file on your hosting S3 bucket.
+
+1. Open the config.js file in a text editor.
+
+1. Update the **invokeUrl** setting under the **api** key in the config.js file. Set the value to the **Invoke URL** for the deployment stage your created in the previous section.
+
+    An example of a complete `config.js` file is included below. Note, the actual values in your file will be different.
+
+    ```JavaScript
+    var _config = {
+        api: {
+            invokeUrl: https://nx5or4mpue.execute-api.us-east-1.amazonaws.com/vocweb
+        }
+    };
+    ```
+
+1. Save your changes locally.
+
+1. In the AWS Management Console, choose **Services** then select **S3** under Storage.
+
+1. Choose your website bucket and then browse to the `js` key prefix.
+
+1. Choose **Upload**.
+
+1. Choose **Add files**, select the local copy of `config.js` and then click **Next**.
+
+1. Choose **Next** without changing any defaults through the `Set permissions` and `Set properties` sections.
+
+1. Choose **Upload** on the `Review` section.
+
+</p></details>

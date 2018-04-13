@@ -1,9 +1,6 @@
 var _config = {
     api: {
-        //'Base URL of your API including the stage',
-    },
-    gender_endpoint: {
-        //'SageMaker Hosted Endpoint for Gender Prediction',
-    }    
+        invokeUrl: 'Base URL of your API including the stage',
+        genderEndpoint: 'SageMaker Hosted Endpoint for Gender Prediction'
+    }
 };
-    
