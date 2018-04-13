@@ -435,7 +435,7 @@ Make sure you pass the name of the DynamoDB table that you created earlier to yo
 
 </p></details>
 
-## Implementation Validation
+### Implementation Validation
 
 In this step you'll test the two functions that you built using the AWS Lambda console. In the next steps you will add a REST API with API Gateway so you can invoke your function from the browser-based application that you have deployed previously.
 
@@ -507,3 +507,182 @@ In this step you'll test the two functions that you built using the AWS Lambda c
     ```
    ![Configure test event](images/listfeedbacks-test-event-result.png)
 
+
+### 9. Create a New REST API
+Use the Amazon API Gateway console to create a new API. This API will be accessible on the public internet and will expose the Lambda functions you built in the previous two steps. Using this API, you will turn your statically hosted website into a dynamic web application by adding client-side Javascript that makes AJAX calls to the exposed APIs.
+
+The static website you deployed already has a configration javascript that you'll modify to add the endpoint once you finished deploying this API. Once done, rest of the controls in the applciation will start sending requests to your API endpoint methods.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the AWS Management Console, click **Services** then select **API Gateway** under Application Services.
+
+1. Choose **Create API**.
+
+1. Select **New API** and enter `NLP Workshop API` for the **API Name**.
+
+1. Select `Edge optimized` from the **Endpoint Type** dropdown.
+    ***Note***: Edge optimized are best for public services being accessed from the Internet. Regional endpoints are typically used for APIs that are accessed primarily from within the same AWS Region.
+
+1. Choose **Create API**
+
+    ![Create API screenshot](images/create-api.png)
+
+</p></details>
+
+### 10. Create a new resource and method
+Create a new resource called /ride within your API. Then create a POST method for that resource and configure it to use a Lambda proxy integration backed by the RequestUnicorn function you created in the first step of this module.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the left nav, click on **Resources** under your NLP Workshop API.
+
+1. From the **Actions** dropdown select **Create Resource**.
+
+1. Enter `enterfeedback` as the **Resource Name**.
+
+1. Ensure the **Resource Path** is set to `enterfeedback`.
+
+1. Select **Enable API Gateway CORS** for the resource.
+
+1. Click **Create Resource**.
+
+    ![Create resource screenshot](images/create-resource-enterfeedback.png)
+
+1. With the newly created `/enterfeedback` resource selected, from the **Action** dropdown select **Create Method**.
+
+1. Select `GET` from the new dropdown that appears, then **click the checkmark**.
+
+    ![Create method screenshot](images/create-method-enterfeedback.png)
+
+1. Select **Lambda Function** for the integration type.
+
+1. Select the Region you are using for **Lambda Region**.
+
+1. Enter the name of the function you created in the previous module, `EnterCustomerFeedback`, for **Lambda Function**.
+
+1. Choose **Save**. Please note, if you get an error that you function does not exist, check that the region you selected matches the one you used in the beginning of this section.
+
+    ![API method integration screenshot](images/api-integration-enterfeedback.png)
+
+1. When prompted to give Amazon API Gateway permission to invoke your function, choose **OK**.
+
+1. Choose the **Method Request** card.
+
+1. Expand the section named **URL Query String Parameters**.
+
+1. Select the **Add query string**.
+
+1. Enter parameter **Name** as `FirstName`, then **click the checkmark**.
+
+1. Select the **Required** checkbox next to `FirstName`
+
+1. Select the **Add query string**.
+
+1. Enter parameter **Name** as `LastName`, then **click the checkmark**.
+
+1. Select the **Required** checkbox next to `LastName`
+
+1. Select the **Add query string**.
+
+1. Enter parameter **Name** as `Feedback`, then **click the checkmark**.
+
+    ![API Query String Parameters screenshot](images/api-enterfeedback-query-string-parameters.png)
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+1. Choose the **Integration Request** card.
+
+1. Expand the section named **Body Mapping Templates**
+
+1. From **Request body passthrouhg** choose the option **When there are no templates defined (recommended)**
+
+    ![Integration request body mapping template screenshot](images/integration-request-body-mapping-templates.png)
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+1. Choose the **Method Response** card.
+
+1. Click **Add Header** under **Response Headers for 200**.
+
+1. Enter the value `Access-Control-Allow-Origin` as header **Name**, then **click the checkmark**.
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+    ![Method response header screenshot](images/method-response-header.png)
+
+1. Select the root(`/`) method of the API
+
+1. From the **Actions** dropdown select **Create Resource**.
+
+1. Enter `getallcontents` as the **Resource Name**.
+
+1. Ensure the **Resource Path** is set to `getallcontents`.
+
+1. Select **Enable API Gateway CORS** for the resource.
+
+1. Click **Create Resource**.
+
+    ![Create resource screenshot](images/create-resource-getallcontents.png)
+
+1. With the newly created `/getallcontents` resource selected, from the **Action** dropdown select **Create Method**.
+
+1. Select `GET` from the new dropdown that appears, then **click the checkmark**.
+
+    ![Create method screenshot](images/create-method-getallcontents.png)
+
+1. Select **Lambda Function** for the integration type.
+
+1. Select the Region you are using for **Lambda Region**.
+
+1. Enter the name of the function you created in the previous module, `GetAllCustomerFeedbacks`, for **Lambda Function**.
+
+1. Choose **Save**. Please note, if you get an error that you function does not exist, check that the region you selected matches the one you used in the beginning of this section.
+
+    ![API method integration screenshot](images/api-integration-getallcontents.png)
+
+1. When prompted to give Amazon API Gateway permission to invoke your function, choose **OK**.
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+1. Choose the **Integration Request** card.
+
+1. Expand the section named **Body Mapping Templates**
+
+1. From **Request body passthrouhg** choose the option **When there are no templates defined (recommended)**
+
+    ![Integration request body mapping template screenshot](images/integration-request-body-mapping-templates.png)
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+1. Choose the **Method Response** card.
+
+1. Click **Add Header** under **Response Headers for 200**.
+
+1. Enter the value `Access-Control-Allow-Origin` as header **Name**, then **click the checkmark**.
+
+1. Click on the **<-Method Execution** link to go back to `GET` method's configuration page
+
+    ![Method response header screenshot](images/method-response-header.png)
+
+</p></details>
+
+### 11. Deploy Your API
+From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use prod for the stage name.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. In the **Actions** drop-down list select **Deploy API**.
+
+1. Select **[New Stage]** in the **Deployment stage** drop-down list.
+
+1. Enter `vocweb` for the **Stage Name**.
+
+1. Choose **Deploy**.
+
+1. Note the **Invoke URL**. You will use it in the next section.
+
+</p></details>
