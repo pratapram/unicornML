@@ -459,7 +459,7 @@ In this step you'll test the two functions that you built using the AWS Lambda c
 
 1. Click **Create**.
 
-1. On the main function edit screen click **Test** with `TestRequestEvent` selected in the dropdown.   
+1. On the main function edit screen click **Test** with `submitfeedback` selected in the dropdown.   
 
 1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
 
@@ -480,7 +480,7 @@ In this step you'll test the two functions that you built using the AWS Lambda c
 
     ```JSON
     {
-        
+
     }
     ```
 
@@ -488,10 +488,22 @@ In this step you'll test the two functions that you built using the AWS Lambda c
 
 1. Click **Create**.
 
-1. On the main function edit screen click **Test** with `TestRequestEvent` selected in the dropdown.   
+1. On the main function edit screen click **Test** with `listfeedbacks` selected in the dropdown.   
 
 1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
 
-1. Verify that the execution succeeded and that the function returns a status code of `200`. The Log output should also show something similar to the following:
+1. Verify that the execution succeeded and that the function returns the record you inserted in the previous test event:
+
+    ```JSON
+    [
+        {
+            "Feedback": "I loved the Unicorns",
+            "FirstName": "John",
+            "ID": "c093b3a6-14b0-4b80-b204-b732fcc10d0d",
+            "LastName": "Doe",
+            "PostedTime": "2018-04-13T00:05:37.923174"
+        }
+    ]
+    ```
    ![Configure test event](images/listfeedbacks-test-event-result.png)
 
