@@ -425,7 +425,7 @@ Make sure you pass the name of the DynamoDB table that you created earlier to yo
 
 1. Click on **Create function**.
 
-1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py).
+1. Scroll down to the **Function code** section and replace the existing code in the **lambda_function.py** code editor with the contents of [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py).
     ![Create Lambda function screenshot](images/listfeedbacks-lambda-code.png)
 
 1. Scroll down to the **Environment variables** section and add one environment variable. Environment variables are key vaue pairs, entered one in each pair of boxes. The box to the left contains the variable name, and the box to the right contains value. In this function, you create one variable by entering `table_name` as name and `UnicorCustomerFeedback` as value. Make sure this value is same as the name of the DynamoDB table you used.
@@ -434,3 +434,64 @@ Make sure you pass the name of the DynamoDB table that you created earlier to yo
 1. Click **"Save"** in the upper right corner of the page.
 
 </p></details>
+
+## Implementation Validation
+
+In this step you'll test the two functions that you built using the AWS Lambda console. In the next steps you will add a REST API with API Gateway so you can invoke your function from the browser-based application that you have deployed previously.
+
+1. From the main edit screen for `EnterCustomerFeedback` function, select **Configure test event** from the **Select a test event...** dropdown.
+
+1. Keep **Create new test event** selected.
+
+1. Enter `submitfeedback` in the **Event name** field
+
+1. Copy and paste the following test event into the editor:
+
+    ```JSON
+    {
+        "FirstName": "John",
+        "LastName": "Doe",
+        "Feedback": "I loved the Unicorns"
+    }
+    ```
+
+    ![Configure test event](images/configure-test-event-submitfeedback.png)
+
+1. Click **Create**.
+
+1. On the main function edit screen click **Test** with `TestRequestEvent` selected in the dropdown.   
+
+1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
+
+1. Verify that the execution succeeded and that the function returns a status code of `200`. The Log output should also show something similar to the following:
+   ![Configure test event](images/submitfeedback-test-event-result.png)
+
+1. After you have successfully tested your `EnterCustomerFeedback` function, it will enter the record, as shown above, into the DynamoDB table. At this point, if you wish, you can check your DynamoDB table to confirm that the item you just passed to the test event exists in the table.
+
+1. Follwing test event would validate not only that the item was inserted into the table, but also that it can be read by a Lambda function and returned to the caller.
+
+. From the main edit screen for `GetAllCustomerFeedbacks` function, select **Configure test event** from the **Select a test event...** dropdown.
+
+1. Keep **Create new test event** selected.
+
+1. Enter `listfeedbacks` in the **Event name** field
+
+1. Copy and paste the following empty json into the editor (note that we don't need to pass any id because this function fetches all records from database):
+
+    ```JSON
+    {
+        
+    }
+    ```
+
+    ![Configure test event](images/configure-test-event-listfeedbacks.png)
+
+1. Click **Create**.
+
+1. On the main function edit screen click **Test** with `TestRequestEvent` selected in the dropdown.   
+
+1. Scroll to the top of the page and expand the **Details** section of the **Execution result** section.
+
+1. Verify that the execution succeeded and that the function returns a status code of `200`. The Log output should also show something similar to the following:
+   ![Configure test event](images/listfeedbacks-test-event-result.png)
+
