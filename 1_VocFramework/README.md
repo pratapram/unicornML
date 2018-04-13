@@ -361,7 +361,7 @@ AWS Lambda will run your code in response to events such as an HTTP request. In 
 
 Use the AWS Lambda console to create a new Lambda function called `EnterCustomerFeedback` that will process the API request submitted with customer name and feedback. Use the provided [entercustomerfeedback.py](functions/entercustomerfeedback.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
 
-Make sure to configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
+Make sure you pass the name of the DynamoDB table that you created earlier to your Lambda function, through an environment variable named `table_name` and you configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -383,8 +383,11 @@ Make sure to configure your function to use the `VOCLambdaRole` IAM role you cre
 
 1. Click on **Create function**.
 
-1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [entercustomerfeedback.py](functions/entercustomerfeedback.py).
+1. Scroll down to the **Function code** section and replace the existing code in the **lambda_function.py** code editor with the contents of [entercustomerfeedback.py](functions/entercustomerfeedback.py).
     ![Create Lambda function screenshot](images/enterfeedback-lambda-code.png)
+
+1. Scroll down to the **Environment variables** section and add one environment variable. Environment variables are key vaue pairs, entered one in each pair of boxes. The box to the left contains the variable name, and the box to the right contains value. In this function, you create one variable by entering `table_name` as name and `UnicorCustomerFeedback` as value. Make sure this value is same as the name of the DynamoDB table you used.
+    ![Lambda function env var screenshot](images/lambda-env-table-name.png)
 
 1. Click **"Save"** in the upper right corner of the page.
 
@@ -400,7 +403,7 @@ You'll follow the same staeps as above to create a Lambda function that will rea
 
 Use the AWS Lambda console to create a new Lambda function called `GetAllCustomerFeedbacks` that will process the API request submitted with customer name and feedback. Use the provided [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py) example implementation for your function code. Just copy and paste from that file into the AWS Lambda console's editor.
 
-Make sure to configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
+Make sure you pass the name of the DynamoDB table that you created earlier to your Lambda function, through an environment variable named `table_name` and you configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -424,6 +427,9 @@ Make sure to configure your function to use the `VOCLambdaRole` IAM role you cre
 
 1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [getallcustomerfeedbacks.py](functions/getallcustomerfeedbacks.py).
     ![Create Lambda function screenshot](images/listfeedbacks-lambda-code.png)
+
+1. Scroll down to the **Environment variables** section and add one environment variable. Environment variables are key vaue pairs, entered one in each pair of boxes. The box to the left contains the variable name, and the box to the right contains value. In this function, you create one variable by entering `table_name` as name and `UnicorCustomerFeedback` as value. Make sure this value is same as the name of the DynamoDB table you used.
+    ![Lambda function env var screenshot](images/lambda-env-table-name.png)
 
 1. Click **"Save"** in the upper right corner of the page.
 
