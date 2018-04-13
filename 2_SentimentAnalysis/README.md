@@ -1,8 +1,38 @@
 # Module 2: Sentiment Analysis using Comprehend
 
-In this module you'll use [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [AWS Lambda](https://aws.amazon.com/lambda/) and [Amazon Comprehend](https://aws.amazon.com/comprehend/) to analyze the feedback that users enter through the web page. The browser application that you deployed in the first module allows users to enter their name and feedback. The JavaScript running in the browser invokes an API Gateway and then Lambda to persist the information entered in a DynamoDB table.
+In this module you'll use [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [AWS Lambda](https://aws.amazon.com/lambda/) and [Amazon Comprehend](https://aws.amazon.com/comprehend/) to analyze the feedback that users enter through the web page. The browser application that you deployed in the first module allows users to enter their name and feedback. The JavaScript running in the browser invokes an API Gateway method, which executes a Lambda function to persist the information entered in a DynamoDB table.
  
-Now in order to activate “Predict Sentiment” functionality, you will implement an API Gateway and a Lambda function that 
+In order to activate “Predict Sentiment” functionality, you will add another method in your API Gateway and a corresponding Lambda function. The Lambda function will invoke Amazon Comprehend Service API to predict the sentiment expressed in user's feedback.
+
+If you're already comfortable with invoking SageMaker API from a Lambda function, or just want to skip ahead and start working with custom model training and hosting on SageMaker, you can launch one fo these AWS CloudFormation templates in the region of your choice to build out the sentiment prediction functionality automatically.
+
+Region| Launch
+------|-----
+US East (N. Virginia) | [![Launch Module 1 in us-east-1](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=nlp-workshop-voc-comprehend&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/voc-comprehend.json)
+US East (Ohio) | [![Launch Module 1 in us-east-2](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=nlp-workshop-voc-comprehend&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/voc-comprehend.json)
+US West (Oregon) | [![Launch Module 1 in us-west-2](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=nlp-workshop-voc-comprehend&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/voc-comprehend.json)
+EU (Ireland) | [![Launch Module 1 in eu-west-1](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=nlp-workshop-voc-comprehend&templateURL=https://s3.amazonaws.com/nlp-workshop/templates/voc-comprehend.json)
+
+<details>
+<summary><strong>CloudFormation Launch Instructions (expand for details)</strong></summary><p>
+
+1. Click the **Launch Stack** link above for the region of your choice.
+
+1. Click **Next** on the Select Template page.
+    ![Speficy Details Screenshot](images/module2-cfn-specify-details.png)
+
+1. On the Options page, leave all the defaults and click **Next**.
+
+1. On the Review page, click **Create**.
+
+1. Wait for the `nlp-workshop-voc-comprehend` stack to reach a status of `CREATE_COMPLETE`.
+
+1. With the `nlp-workshop-voc-comprehend` stack selected, click on the **Outputs** tab and verify that Rest API ID output value is the same as that you specified in the previous module. You should however see a new value for Deployment Id, indicating the API have been redeployed with the new method added..
+
+1. Verify that you can select one or more feedbacks from VOC application home page and click on `Predict Sentiment`, and that the page refreshes to show the sentiment of the chosen feedback as one of POSITIVE, NEGATIVE, NEUTRAL or MIXED.
+Move on to the next module [NLP Classifier](../3_NLPClassifier).
+
+</p></details>
 
 ## Architecture Overview
 
