@@ -439,6 +439,9 @@ Make sure you pass the name of the DynamoDB table that you created earlier to yo
 
 In this step you'll test the two functions that you built using the AWS Lambda console. In the next steps you will add a REST API with API Gateway so you can invoke your function from the browser-based application that you have deployed previously.
 
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
 1. From the main edit screen for `EnterCustomerFeedback` function, select **Configure test event** from the **Select a test event...** dropdown.
 
 1. Keep **Create new test event** selected.
@@ -506,7 +509,7 @@ In this step you'll test the two functions that you built using the AWS Lambda c
     ]
     ```
    ![Configure test event](images/listfeedbacks-test-event-result.png)
-
+</p></details>
 
 ### 9. Create a New REST API
 Use the Amazon API Gateway console to create a new API. This API will be accessible on the public internet and will expose the Lambda functions you built in the previous two steps. Using this API, you will turn your statically hosted website into a dynamic web application by adding client-side Javascript that makes AJAX calls to the exposed APIs.
