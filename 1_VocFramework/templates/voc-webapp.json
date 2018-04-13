@@ -64,7 +64,6 @@
             "Type": "AWS::IAM::Role",
             "DependsOn": "UnicornFeedbackTable",
             "Properties": {
-                "RoleName": "VOCLambdaRole",
                 "AssumeRolePolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
@@ -663,20 +662,47 @@
             "Description" : "DynamoDB Table name where customer feedbacks would be stored.",
             "Value" : {
                 "Ref" : "UnicornFeedbackTable"
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-DynamoTable" }
             }
         },      
         "LambdaExecutionIAMRole" : {
             "Description" : "IAM Role to be assumed by any Lambda function within the VOC Application .",
             "Value" : {
-                "Ref" : "LambdaExecutionRole"
+                "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"]
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-LambdaRole" }
             }
-        },            
-        "NLPWorkshopAPIEndpoint": {
-            "Description" : "Rest API endpoints for NLP Workshop",
+        }, 
+        "NLPWorkshopAPIRootResource": {
+            "Description" : "Rest API root resource for NLP Workshop",
+            "Value": {
+                "Fn::GetAtt": ["NLPWorkshopAPI", "RootResourceId"]
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-ApiGatewayRoot" }
+            }
+        },                     
+        "NLPWorkshopAPIId": {
+            "Description" : "Rest API ID for NLP Workshop",
             "Value": {
                 "Ref": "NLPWorkshopAPI"
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-ApiGatewayId" }
             }
-        },        
+        },      
+        "NLPWorkshopAPIDeploymentId": {
+            "Description" : "Rest API Deplyment ID for NLP Workshop",
+            "Value": {
+                "Ref": "NLPWorkshopAPIDeployment"
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-ApiGatewayDeploymentId" }
+            }
+        },           
         "WebsiteURL": {
             "Description" : "URL for Unicorn Feedback website",
             "Value": {
