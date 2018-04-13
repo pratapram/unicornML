@@ -675,6 +675,61 @@ Create a new resource called /ride within your API. Then create a POST method fo
 
 </p></details>
 
+### Implementation Validation
+
+In this step you'll test the two resources that you created in your API, exposing the Lambda functions built in the previous step. This test will validate that that parameters from `GET` requests are passed to Lambda function as event parameters and that the API Gateway has the appropriate permission needed to invoke the Lambda functions and return the function response as HTTP response. In the next steps you will deploy the REST API and update the client side Javascript, so that your web application can invoke these methods and populate the web page.
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1. From the **Resources** section of `NLP Workshop API` function, select the `GET` method under the resource `enterfeedback`.
+
+1. Click on the link for  **TEST** under the **Client** card.
+
+1. Since you have previously selected `FirstName`, `LastName`, and `Feedback` as query string paramters for **Method Request**, you'll be presented with an input form with these 3 fields.
+
+1. Enter some sample values, and click the **Test** button.
+
+1. On the right hand side of the test screen, you should see value `200` coming back as response body. This indicates that the API gateway have been able to successfully invoke the Lambda function.
+
+    ![API resource test for enterfeedback screenshot](images/enterfeedback-api-test.png)
+
+1. After you have successfully tested your `enterfeedback` resource, it will enter the record into the DynamoDB table. At this point, if you wish, you can check your DynamoDB table to confirm that the item you just passed to the test event exists in the table.
+
+1. Follwing test event would validate not only that the item was inserted into the table, but also that it can be read by a Lambda function and returned via the API gateway.
+
+1. From the **Resources** section of `NLP Workshop API` function, select the `GET` method under the resource `getallcontents`.
+
+1. Click on the link for  **TEST** under the **Client** card.
+
+1. Since this method does not need any query parameters, simply click the **Test** button.
+
+1. On the right hand side of the test screen, you should see request status to be `200` . This indicates that the API gateway have been able to successfully invoke the Lambda function.
+
+1. Verify that the response body contains both feedback records one inserted during this validation and another inserted during Lambda function validation:
+
+    ```JSON
+    [
+        {
+            "Feedback": "I loved the Unicorns",
+            "FirstName": "John",
+            "ID": "c093b3a6-14b0-4b80-b204-b732fcc10d0d",
+            "LastName": "Doe",
+            "PostedTime": "2018-04-13T00:05:37.923174"
+        },
+        {
+            "Feedback": "Unicorning is not for me.",
+            "FirstName": "Jane",
+            "ID": "2b86b34f-1b34-4858-8c9e-2608f454a7d7",
+            "LastName": "Roe",
+            "PostedTime": "2018-04-13T07:01:08.494610"
+        }
+    ]
+    ```
+
+    ![API resource test for getallcontents screenshot](images/getallcontents-api-test.png)
+</p></details>
+
 ### 11. Deploy Your API
 From the Amazon API Gateway console, choose Actions, Deploy API. You'll be prompted to create a new stage. You can use prod for the stage name.
 
