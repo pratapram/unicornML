@@ -787,3 +787,29 @@ Note:
 1. Choose **Upload** on the `Review` section.
 
 </p></details>
+
+## Implementation Validation
+
+**Note:** It's possible that you will see a delay between updating the config.js file in your S3 bucket and when the updated content is visible in your browser. You should also ensure that you clear your browser cache before executing the following steps.
+
+1. Visit `/unicornfeedback.html` under your website domain.
+
+1. When the Voice of the Customer application loads this time, you should see the two test records that you entered during the validation steps above, displayed as HTML table on the page.
+
+![VOC Webapp screenshot](images/voc-webapp-homepage-with-records.png)
+
+1. Now click on the button **Enter a New Customer Feedback**. You should be redirected to a page `/enterfeedback.html` under your website domain.
+
+1. The page displays a form with the same 3 fields that you configured to be entered when submitting a feedback - First name, Last name, and Feedback. Enter some test values and click **Submit**.
+
+![VOC Webapp screenshot](images/voc-webform-submit-feedback.png)
+
+1. Verify that you are redirected to the home screen and that the list of feedbacks displays the additional record that you just entered via the webform.
+
+![VOC Webapp screenshot](images/voc-webapp-homepage-with-submitted-records.png)
+
+Note that at this point the controls for **Predict Sentiment** and **Identify Gender** does not work. This is so because you haven't added any method and integration to execute these functions.
+
+Move on to [Sentiment Analysis](../2_SentimentAnalysis) module to learn how you can use the API driven services offered by Amazon Comprehend to predict the sentiments expressed in the feedbacks entered by the customers.
+
+Move on to [NLP Classifier](../3_NLPClassifier) module to learn how you can use the Amazon SageMaker to orchestrate a Machine Learning pipeline to train, validate, host and deploy an LSTM based clssifier to identify users' gender from the name they have entered while submitting feedbacks.
