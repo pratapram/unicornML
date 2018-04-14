@@ -54,8 +54,8 @@ Every Lambda function has an IAM role associated with it. This role defines what
 
 #### High-Level Instructions
 
-Use the IAM console to create a new role. Name it `NLPWLambda` and select AWS Lambda for the role type. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and detect sentiment by Comprehend.
-Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action
+Use the IAM console to create a new Lambda execution role or use the Lambda execution role you created in the previous module. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and detect sentiment by Comprehend.
+If creating a new role Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -72,11 +72,13 @@ Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to g
 
 1.	Click **Next: Review**.
 
-1.	Enter `NLPWLambda` for the **Role name**.
+1.	Enter `VOCLambdaRoleComprehend` for the **Role name**.
 
 1.	Choose **Create role**.
 
-1.	Type `NLPWLambda` into the filter box on the Roles page and choose the role you just created.
+1.	Type `VOCLambdaRoleComprehend` into the filter box on the Roles page and choose the role you just created.
+
+1.  Alternatively type `VOCLambdaRole` in the filter Box, to select the role you created in Model-1 and choose the previously created role.
 
 1.	On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy. 
 	![Inline policies screenshot](images/inline-policies.png)
@@ -105,9 +107,9 @@ AWS Lambda will run your code in response to events in this case from API Gatewa
 
 #### High-Level Instructions
 
-Use the AWS Lambda console to create a new Lambda function called `DetectSentiment` that will process the requests. 
+Use the AWS Lambda console to create a new Lambda function called `PredictFeedbackSentiment` that will process the requests. 
 
-Make sure to configure your function to use the `NLPWLambda` IAM role you created in the previous section.
+Make sure to configure your function to use the `VOCLambdaRoleComprehend` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
@@ -118,18 +120,18 @@ Make sure to configure your function to use the `NLPWLambda` IAM role you create
 
 1. Keep the default **Author from scratch** card selected.
 
-1. Enter `DetectSentiment` in the **Name** field.
+1. Enter `PredictFeedbackSentiment` in the **Name** field.
 
 1. Select **Python 3.6** for the **Runtime**.
 
 1. Ensure `Choose an existing role` is selected from the **Role** dropdown.
 
-1. Select `NLPWLambda` from the **Existing Role** dropdown.
+1. Select `VOCLambdaRoleComprehend` from the **Existing Role** dropdown.
     ![Create Lambda function screenshot](images/create-lambda-function.png)
 
 1. Click on **Create function**.
 
-1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [DetectSentiment.py](DetectSentiment.py).
+1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [predictfeedbacksentiment.py](functions/predictfeedbacksentiment.py).
     ![Create Lambda function screenshot](images/create-lambda-function-code.png)
 
 1. Click **"Save"** in the upper right corner of the page.
@@ -328,4 +330,4 @@ If you completed module 1 manually, you can edit the `config.js` file you have s
 
 1.	Click on **Predict Sentiment** button. It will refresh the page and load the result of the sentiment detection.
 
-Congratulations, you have completed the module 2 of the NLP Workshop! You are ready to move on to the [module 3: NLP Classifier](../README.md#Modules).
+Congratulations, you have completed the module 2 of the NLP Workshop! You are ready to move on to the next module [NLP Classifier](../3_NLPClassifier).
