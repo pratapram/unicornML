@@ -330,4 +330,6 @@ If you completed module 1 manually, you can edit the `config.js` file you have s
 
 1.	Click on **Predict Sentiment** button. It will refresh the page and load the result of the sentiment detection.
 
+![VOC Webapp screenshot](images/voc-webapp-homepage-with-sentiments.png)
+
 Congratulations, you have completed the module 2 of the NLP Workshop! You are ready to move on to the next module [NLP Classifier](../3_NLPClassifier).
