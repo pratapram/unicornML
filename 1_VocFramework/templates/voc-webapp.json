@@ -658,6 +658,15 @@
         }                  
     },
     "Outputs" : {
+        "HostingBucket" : {
+            "Description" : "S3 Bucket used to serve website and host training data and model.",
+            "Value" : {
+                "Ref" : "WebsiteBucket"
+            },
+            "Export" : { 
+                "Name" : {"Fn::Sub": "${AWS::StackName}-S3Bucket" }
+            }
+        },           
         "UnicornFeedbackDynamoDBTable" : {
             "Description" : "DynamoDB Table name where customer feedbacks would be stored.",
             "Value" : {
