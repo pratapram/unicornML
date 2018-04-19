@@ -24,20 +24,16 @@
                     } 
                 },
                 "Environment": {
-                    "Variables" : [
-                        { 
-                            "table_name": {
-                                "Fn::ImportValue" : {
-                                    "Fn::Sub" : "${WebappStackName}-DynamoTable"
-                                }                                   
-                            }
+                    "Variables" : { 
+                        "table_name": {
+                            "Fn::ImportValue" : {
+                                "Fn::Sub" : "${WebappStackName}-DynamoTable"
+                            }                                   
                         },
-                        { 
-                            "sagemaker_endpoint": {
-                                "Ref" : "SageMakerEndPoint"                                 
-                            }
-                        } 
-                    ]                       
+                        "sagemaker_endpoint": {
+                            "Ref" : "SageMakerEndPoint"                                 
+                        }
+                    }                    
                 },
                 "Code": {
                     "ZipFile" : { "Fn::Join" : ["\n", [
@@ -114,12 +110,12 @@
                 ]}
             }
         },     
-        "EmptyModel": {
+        "EmptyModel2": {
             "Type": "AWS::ApiGateway::Model",
             "DependsOn": "IdentifyCustomerGenderLambdaPermission",
             "Properties": {
                 "ContentType": "application/json",
-                "Name": "EmptyModel",
+                "Name": "EmptyModel2",
                 "RestApiId": {
                     "Fn::ImportValue" : {
                         "Fn::Sub" : "${WebappStackName}-ApiGatewayId"
@@ -134,7 +130,7 @@
         },                      
         "APIResourceIdentifyGender" : {
             "Type" : "AWS::ApiGateway::Resource",
-            "DependsOn": "EmptyModel",
+            "DependsOn": "EmptyModel2",
             "Properties" : {
                 "ParentId" :  {
                     "Fn::ImportValue" : {
@@ -194,7 +190,7 @@
                 },                  
                 "MethodResponses": [{ 
                     "ResponseModels": {
-                      "application/json": {"Ref": "EmptyModel"}
+                      "application/json": {"Ref": "EmptyModel2"}
                     },                
                   "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": true
@@ -273,7 +269,7 @@
         "NLPWorkshopAPIDeploymentId": {
             "Description" : "Rest API Deplyment ID for NLP Workshop",
             "Value": {
-                "Ref": "NLPWorkshopAPIDeploymentWithSentimentPredictor"
+                "Ref": "NLPWorkshopAPIDeploymentWithGenderIdentifier"
             },
             "Export" : { 
                 "Name" : {"Fn::Sub": "${AWS::StackName}-ApiGatewayDeploymentId" }
