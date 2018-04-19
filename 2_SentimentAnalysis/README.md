@@ -147,11 +147,11 @@ After you have successfully tested your new function using the Lambda console, y
 
 #### Background
 
-In Module 1,  you have created Lambda execution role `VOCLambdaRole`. In order for your Lambda function to call the Comprehend API, you will need to add policy to grands your Lambda function permission to detect sentiment. 
+In Module 1,  you have created Lambda execution role `VOCLambdaRole`. In order for your Lambda function you created in the step 1 to call the Comprehend API, you will need to add policy to grands your Lambda function permission to detect sentiment. 
 
 #### High-Level Instructions
 
-Use the IAM Management Console to add a policy to an exisitng role. Go to the Lambda execution role you created in Module 1. You'll need to create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action. 
+Use the IAM Management Console to add a policy to the exisitng role. Go to the Lambda execution role you created in Module 1. You'll need to create a custom inline policy for the role that allows the `comprehend:DetectSentiment` action. 
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
