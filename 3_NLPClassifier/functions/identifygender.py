@@ -27,10 +27,9 @@ def handler(event, context):
                         Body=firstName,
                         ContentType='text/csv'
                     )
-                response = json.loads(response['Body'].read().decode("utf-8"))
+                response = json.loads(response['Body'].read().decode('utf-8'))
                 print(response)
                 gender = response[firstName]
-                print("Identified as "+gender)
                 response = dynamodb.update_item(
                     ExpressionAttributeNames={'#GD': 'Gender'},
                     ExpressionAttributeValues={':gd' : {'S': gender}},
