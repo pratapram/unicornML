@@ -46,60 +46,8 @@ Each of the following sections provide an implementation overview and detailed, 
 
 If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
 
-### 1. Create an IAM Role for your Lambda function 
-
-#### Background
-
-Every Lambda function has an IAM role associated with it. This role defines what other AWS services the function is allowed to interact with. For the purposes of this workshop, you'll need to create an IAM role that grants your Lambda function permission to write logs to Amazon CloudWatch Logs and detect sentiment by Comprehend.
-
-#### High-Level Instructions
-
-Use the IAM console to create a new Lambda execution role or use the Lambda execution role you created in the previous module. You'll need to attach policies that grant your function permissions to write to Amazon CloudWatch Logs and detect sentiment by Comprehend.
-If creating a new role Attach the managed policy called `AWSLambdaBasicExecutionRole` to this role to grant the necessary CloudWatch Logs permissions. Also, create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-1.	From the AWS Management Console, click on **Services** and then select **IAM** in the Security, Identity & Compliance section.
-
-1.	Select **Roles** in the left navigation bar and then choose **Create new role**.
-
-1.	Select **Lambda** for the role type from the **AWS service** group, then click **Next: Permissions**
-
-    **Note:** Selecting a role type automatically creates a trust policy for your role that allows AWS services to assume this role on your behalf. If you were creating this role using the CLI, AWS CloudFormation or another mechanism, you would specify a trust policy directly.
-
-1.	Begin typing `AWSLambdaBasicExecutionRole` in the Filter text box and check the box next to that role.	
-
-1.	Click **Next: Review**.
-
-1.	Enter `VOCLambdaRoleComprehend` for the **Role name**.
-
-1.	Choose **Create role**.
-
-1.	Type `VOCLambdaRoleComprehend` into the filter box on the Roles page and choose the role you just created.
-
-1.  Alternatively type `VOCLambdaRole` in the filter Box, to select the role you created in Model-1 and choose the previously created role.
-
-1.	On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy. 
-	![Inline policies screenshot](images/inline-policies.png)
-
-1. Select **Choose a service**.
-
-1. Begin typing `Comprehend` into the search box labeled **Find a service** and select **Comprehend** when it appears. 
-	![Select policy service](images/select-policy-service.png)
-	
-1. Choose **Select actions**.
-
-1.	Begin typing `DetectSentiment` into the search box labeled **Filter actions** and check the box next to **DetectSentiment** when it appears.
-
-1. Choose **Review Policy**.
-
-1. Enter `ComprehendDetectSentiment` for the policy name and choose **Create policy**.
-    ![Review Policy](images/review-policy.png)
-	
-</p></details>
-
-### 2. Create a Lambda Function 
+<<<<<<< HEAD
+### 1. Create a Lambda Function 
 
 #### Background
 
@@ -131,7 +79,8 @@ Make sure to configure your function to use the `VOCLambdaRoleComprehend` IAM ro
 
 1. Click on **Create function**.
 
-1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [predictfeedbacksentiment.py](functions/predictfeedbacksentiment.py).
+1. Scroll down to the **Function code** section and replace the exiting code in the **lambda_function.py** code editor with the contents of [predictfeedbacksentiment.py](predictfeedbacksentiment.py).
+
     ![Create Lambda function screenshot](images/create-lambda-function-code.png)
 
 1. Click **"Save"** in the upper right corner of the page.
@@ -194,6 +143,42 @@ For this section you will test the function that you built using the AWS Lambda 
 ```
 
 After you have successfully tested your new function using the Lambda console, you can move on to the next section.
+
+### 2. Add Policy to Lambda Execution Role 
+
+#### Background
+
+In Module 1,  you have created Lambda execution role `VOCLambdaRole`. In order for your Lambda function to call the Comprehend API, you will need to add policy to grands your Lambda function permission to detect sentiment. 
+
+#### High-Level Instructions
+
+Use the IAM Management Console to add a policy to an exisitng role. Go to the Lambda execution role you created in Module 1. You'll need to create a custom inline policy for your role that allows the `comprehend:DetectSentiment` action. 
+
+<details>
+<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
+1.	Go to the IAM Management Console, and look for the `VOCLambdaRole` role you created in the Module 1.
+
+1.	Select the `VOCLambdaRole` role that you created in the Module 1.
+
+1.	On the Permissions tab, choose the **Add inline policy** link in the lower right corner to create a new inline policy. 
+	![Inline policies screenshot](images/inline-policies.png)
+
+1. Select **Choose a service**.
+
+1. Begin typing `Comprehend` into the search box labeled **Find a service** and select **Comprehend** when it appears. 
+	![Select policy service](images/select-policy-service.png)
+	
+1. Choose **Select actions**.
+
+1.	Begin typing `DetectSentiment` into the search box labeled **Filter actions** and check the box next to **DetectSentiment** when it appears.
+
+1. Choose **Review Policy**.
+
+1. Enter `ComprehendDetectSentiment` for the policy name and choose **Create policy**.
+    ![Review Policy](images/review-policy.png)
+	
+</p></details>
 
 ### 3. Add a Resource and Method to the existing REST API
 
@@ -274,45 +259,6 @@ From the Amazon API Gateway console, choose Actions, Deploy API. You'll be promp
 1. Choose **Deploy**.
 
 1. Note the **Invoke URL**. You will use it in the next section.
-
-</p></details>
-
-### 5. Update the Website Config
-
-Update the /js/config.js file in your website deployment to include the invoke URL of the stage you just created. You should copy the invoke URL directly from the top of the stage editor page on the Amazon API Gateway console and paste it into the _config.api.invokeUrl key of your sites /js/config.js file. 
-
-<details>
-<summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
-
-If you completed module 1 manually, you can edit the `config.js` file you have saved locally. If you used the AWS CloudFormation template, you must first download the `config.js` file from your S3 bucket. To do so, visit `/js/config.js` under the base URL for your website and choose **File**, then choose **Save Page As** from your browser.
-
-1. Open the config.js file in a text editor.
-
-1. Update the **invokeUrl** setting under the **api** key in the config.js file. Set the value to the **Invoke URL** for the deployment stage your created in the previous section.
-
-    An example of a complete `config.js` file is included below. Note, the actual values in your file will be different. Replace `<your_API_Id>` with the API Id you create in the previous step. Also replace the stage name if it is different from `prod`. 
-
-    ```JavaScript
-    var _config = {
-		api: {
-			invokeUrl: 'https://<your_API_Id>.execute-api.us-west-2.amazonaws.com/prod'//'Base URL of your API including the stage',
-		}
-	}; 
-    ```
-
-1. Save your changes locally.
-
-1. In the AWS Management Console, choose **Services** then select **S3** under Storage.
-
-1. Choose your website bucket and then browse to the `js` key prefix.
-
-1. Choose **Upload**.
-
-1. Choose **Add files**, select the local copy of `config.js` and then click **Next**.
-
-1. Choose **Next** without changing any defaults through the `Set permissions` and `Set properties` sections.
-
-1. Choose **Upload** on the `Review` section.
 
 </p></details>
 
