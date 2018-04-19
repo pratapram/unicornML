@@ -4,7 +4,7 @@ It looks like women like the service better than men, but we are not sure. Unfor
 
 Amazon SageMaker is a fully managed service that enables developers and data scientists to quickly and easily build, train, and deploy machine learning models at any scale. This repository contains a collection of workshops and other hands on content that will guide you through using the many features of SageMaker.  
 
-![Overview](./images/overview.png)
+![Overview](../images/overview.png)
 
 You'll start by creating a SageMaker notebook instance with the requisite permissions. Depending on the workshop, you will then interact with SageMaker via sample Jupyter notebooks, the AWS CLI, the SageMaker console, or all three. During a workshop, you'll explore various data sets, create model training jobs using SageMaker's hosted training feature, and create endpoints to serve predictions from your models using SageMaker's hosted endpoint feature.  
 
@@ -42,11 +42,11 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 2. Click on Amazon SageMaker from the list of all services.  This will bring you to the Amazon SageMaker console homepage.
 
-![Services in Console](./images/console-services.png)
+![Services in Console](../images/console-services.png)
 
 3. To create a new notebook instance, go to **Notebook instances**, and click the **Create notebook instance** button at the top of the browser window.
 
-![Notebook Instances](./images/notebook-instances.png)
+![Notebook Instances](../images/notebook-instances.png)
 
 4. Type smworkshop-[First Name]-[Last Name] into the **Notebook instance name** text box, and select ml.m4.xlarge for the **Notebook instance type**.
 
@@ -54,7 +54,7 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 5. For IAM role, choose **Create a new role**, and in the resulting pop-up modal, select **Specific S3 buckets** under **S3 Buckets you specify – optional**. In the text field, paste the name of the S3 bucket you created above, AND the following bucket name separated from the first by a comma:  `gdelt-open-data`.  The combined field entry should look similar to ```smworkshop-john-smith, gdelt-open-data```. Click **Create role**.
 
-![Create IAM role](./images/role-popup.png)
+![Create IAM role](../images/role-popup.png)
 
 6. You will be taken back to the Create Notebook instance page.  Click **Create notebook instance**.
 
@@ -62,9 +62,9 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 1. Wait for the server status to change to **InService**. This will take several minutes, possibly up to ten but likely less.
 
-![Access Notebook](./images/open-notebook.png)
+![Access Notebook](../images/open-notebook.png)
 
 2. Click **Open**. You will now see the Jupyter homepage for your notebook instance.
 
-![Open Notebook](./images/jupyter-homepage.png)
+![Open Notebook](../images/jupyter-homepage.png)
 
