@@ -46,7 +46,6 @@ Each of the following sections provide an implementation overview and detailed, 
 
 If you're using the latest version of the Chrome, Firefox, or Safari web browsers the step-by-step instructions won't be visible until you expand the section.
 
-<<<<<<< HEAD
 ### 1. Create a Lambda Function 
 
 #### Background
