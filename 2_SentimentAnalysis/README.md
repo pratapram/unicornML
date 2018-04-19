@@ -56,7 +56,7 @@ AWS Lambda will run your code in response to events in this case from API Gatewa
 
 Use the AWS Lambda console to create a new Lambda function called `PredictFeedbackSentiment` that will process the requests. 
 
-Make sure to configure your function to use the `VOCLambdaRoleComprehend` IAM role you created in the previous section.
+Make sure to configure your function to use the `VOCLambdaRole` IAM role you created in the previous section.
 
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
