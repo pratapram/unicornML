@@ -37,10 +37,10 @@
     <meta property="og:image" content="https://avatars2.githubusercontent.com/u/3299148?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="awslabs/amazon-sagemaker-examples" /><meta property="og:url" content="https://github.com/awslabs/amazon-sagemaker-examples" /><meta property="og:description" content="amazon-sagemaker-examples - Example notebooks that show how to apply machine learning and deep learning in Amazon SageMaker" />
 
   <link rel="assets" href="https://assets-cdn.github.com/">
-  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjU2OTk1NTM5Ojk4MjdiNTU2NDYzMzVmMzFhY2VkZDdjNDQ4NGNlODQ1N2FmZjBhZmViNjQxNjVmM2VkMzNhM2EwMGYyY2NjNzY=--3c86948e74cfc7f4128b11402f88e79bc224a3a1">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjU2OTk1NTM5OjU1OTFhNmRjNWJmNTFlOTU1MzBlNGVjZTI1NGEyZWNlNDU1NGYyNjE0MWU2MDJmMmJmNTk2NjFiNWFjMTBiNjA=--a86ea775b87cad9a72e34885458faa46975f8cf6">
   <meta name="pjax-timeout" content="1000">
   <link rel="sudo-modal" href="/sessions/sudo_modal">
-  <meta name="request-id" content="142E:0392:22504B9:2F1A06C:5AD8F403" data-pjax-transient>
+  <meta name="request-id" content="142E:0392:2250B78:2F1A4F4:5AD8F409" data-pjax-transient>
 
 
   
@@ -52,7 +52,7 @@
   <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
     <meta name="google-analytics" content="UA-3769691-2">
 
-<meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="142E:0392:22504B9:2F1A06C:5AD8F403" /><meta name="octolytics-dimension-region_edge" content="sea" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-actor-id" content="2797982" /><meta name="octolytics-actor-login" content="dbinoy" /><meta name="octolytics-actor-hash" content="6f4f3ecc1c1dd2bd6eac7afb2b0a1f7516dc8cd94eb38d7a5a405a8171cec7df" />
+<meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="142E:0392:2250B78:2F1A4F4:5AD8F409" /><meta name="octolytics-dimension-region_edge" content="sea" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-actor-id" content="2797982" /><meta name="octolytics-actor-login" content="dbinoy" /><meta name="octolytics-actor-hash" content="6f4f3ecc1c1dd2bd6eac7afb2b0a1f7516dc8cd94eb38d7a5a405a8171cec7df" />
 <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
 
 
@@ -67,7 +67,7 @@
     <meta name="user-login" content="dbinoy">
 
       <meta name="expected-hostname" content="github.com">
-    <meta name="js-proxy-site-detection-payload" content="NjkzNjQ3YWRlNzFiMTJkZTM1MTY3Y2EwODJlNDdjNjcwNDAxN2Y3YzRkYTZjNjFiYmVhMmRmNzBkOWQwOWJhOHx7InJlbW90ZV9hZGRyZXNzIjoiNTQuMjQwLjE5Ni4xNzIiLCJyZXF1ZXN0X2lkIjoiMTQyRTowMzkyOjIyNTA0Qjk6MkYxQTA2Qzo1QUQ4RjQwMyIsInRpbWVzdGFtcCI6MTUyNDE2NzY4OSwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+    <meta name="js-proxy-site-detection-payload" content="NDUwMWMxNzYyMTgxYjlmZjhiZWViZTdmODk1NTI3M2EyYmU4ZTJiMDA4OGQwN2FkZmM4ODRmYzY0ZGQ4Y2VlMnx7InJlbW90ZV9hZGRyZXNzIjoiNTQuMjQwLjE5Ni4xNzIiLCJyZXF1ZXN0X2lkIjoiMTQyRTowMzkyOjIyNTBCNzg6MkYxQTRGNDo1QUQ4RjQwOSIsInRpbWVzdGFtcCI6MTUyNDE2NzcwMSwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
 
     <meta name="enabled-features" content="UNIVERSE_BANNER,FREE_TRIALS,MARKETPLACE_INSIGHTS,MARKETPLACE_SELF_SERVE,MARKETPLACE_INSIGHTS_CONVERSION_PERCENTAGES">
 
@@ -262,7 +262,7 @@
           Settings
         </a></li>
 
-        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="3Wur8SsX8PPjYAZ4OvgDUX9+Q/DRjgktOcXtcSpRfnH8fZWpZsPTqH1ePPld4yFTZDL/hWARHD8eyQwo3Zeq4w==" />
+        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="gerfX7u+z72arNpCklPnkR56oReIQbBd7nwlt+r2RSGg/OEH9mrs5gSS4MP1SMWTBTYdYjnepU/JcMTuHTCRsw==" />
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -274,7 +274,7 @@
 
 
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="sr-only right-0" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="nU7tU6pjLIRQbMKTzkPulqjKmyxHf6avNvh3uaqpah28WNML57cP385S+BKpWMyUs4YnWfbgs70R9JbgXW++jw==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="sr-only right-0" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="+3Yku9UjKDKOs28StbOFOx6Qa+oXq3wg+RV050l1kc7aYBrjmPcLaRCNVZPSqKc5BdzXn6Y0aTLeGZW+vrNFXA==" />
           <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
             Sign out
           </button>
@@ -312,7 +312,7 @@
 
       <ul class="pagehead-actions">
   <li>
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-autosubmit="true" data-remote="true" class="js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="rVy9RmBpjHA/JcHIIlGb3yJOtlxczXvbz0jfTxUChVQ4iL3iHRPe02PVvMO2BcEH8a0CCai+Cf44tNI2V9jfNA==" />      <input type="hidden" name="repository_id" id="repository_id" value="107937815" class="form-control" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-autosubmit="true" data-remote="true" class="js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Tpf/MW7mJqhQ2KHANWhsf+HLXU2CAnHoiDSujFI6OtHbQ/+VE5x0Cwwo3MuhPDanMijpGHZxA81/yKP1EOBgsQ==" />      <input type="hidden" name="repository_id" id="repository_id" value="107937815" class="form-control" />
 
         <div class="select-menu js-menu-container js-select-menu">
           <a href="/awslabs/amazon-sagemaker-examples/subscription"
@@ -392,7 +392,7 @@
   <li>
     
   <div class="js-toggler-container js-social-container starring-container ">
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/awslabs/amazon-sagemaker-examples/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="xstABIF+5BFD7UdkrkfiffiCZZp9hpBm/OWHCrC5rkCVUuecGS1H7fyHJx5cjV7mCt37ZJYbIy3B/+mn2yFA+w==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/awslabs/amazon-sagemaker-examples/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="/oZwse6iPNPi1FAP43trd6AkBs6QgswLLv1BXp5Vg5qtH9cpdvGfL12+MHURsdfsUnuYMHsff0AT5y/z9c1tIQ==" />
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -407,7 +407,7 @@
           415
         </a>
 </form>
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/awslabs/amazon-sagemaker-examples/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ONxDsWnjAIrV68z6RnTFpdxfGOZtqzYinZ0mAtc3fjQAvb4UpOqj6H2H53gMaM2LUDMUqKdN5qXoov7cA5hGvg==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/awslabs/amazon-sagemaker-examples/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="tV/I6MsME2q8fRca5uxe5jIy76IYtSpDSkQbaf+4YDaNPjVNBgWwCBQRPJis8FbIvl7j7NJT+sQ/e8O3KxdYvA==" />
       <input type="hidden" name="context" value="repository"></input>
       <button
         type="submit"
@@ -426,7 +426,7 @@
   </li>
 
   <li>
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="btn-with-count" action="/awslabs/amazon-sagemaker-examples/fork" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="0vIdviDq92OLP15LZxZ2VNeIrA0KWOGflUnHh38rTu61tLE8NVP4yToU5jRwb7wFWRqNPr1d+ts9LhRZyPy4Qw==" />
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="btn-with-count" action="/awslabs/amazon-sagemaker-examples/fork" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="yMONkhVkN8jiIf2dncqFiKS/tuaXDdV54qw7Eu7uPiGvhSEQAN04YlMKReKKs0/ZKi2X1SAIzj1Ky+jMWTnIjA==" />
             <button
                 type="submit"
                 class="btn btn-sm btn-with-count"
@@ -1164,7 +1164,7 @@
             <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
         </a>
 
-        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/awslabs/amazon-sagemaker-examples/delete/master/advanced_functionality/scikit_bring_your_own/stack.png" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="vNQidD2pQa2G/MPuGwBHY5fClwzdd+RDSoq2JF5OA95n6xmCfEcq4cciIi1BJkn4x3WNle3kf2lDjmr5sYf37w==" />
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/awslabs/amazon-sagemaker-examples/delete/master/advanced_functionality/scikit_bring_your_own/stack.png" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="SPjRSpl6PnJvVoY516Mk1pkOgbDdDBI1wx04Lz3+KmCTx+q82JRVPi6IZ/qNhSpNybmbKe2fiR/KGeTy0jfeUQ==" />
           <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
             aria-label="Fork this project and delete the file" data-disable-with>
             <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
@@ -1207,7 +1207,7 @@
 <div class="footer container-lg px-3" role="contentinfo">
   <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
     <ul class="list-style-none d-flex flex-wrap ">
-      <li class="mr-3">&copy; 2018 <span title="0.37873s from unicorn-79041683-g2w03">GitHub</span>, Inc.</li>
+      <li class="mr-3">&copy; 2018 <span title="0.45575s from unicorn-79041683-qwcmf">GitHub</span>, Inc.</li>
         <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
         <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
         <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>
