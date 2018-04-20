@@ -15,7 +15,7 @@ We'll start by creating an Amazon S3 bucket that will be used throughout the wor
 
 ## 1. Create a S3 Bucket
 
-SageMaker typically uses S3 as storage for data and model artifacts.  In this step you'll create a S3 bucket for this purpose. To begin, sign into the AWS Management Console, https://console.aws.amazon.com/.
+SageMaker typically uses S3 as storage for data and model artifacts.  In this step you'll create a S3 bucket for this purpose. To begin, sign into the AWS Management Console, https://console.aws.amazon.com/. You can create a new S3 bucket for the ML training, or use the same S3 bucket. Be warned that the bucket we created in the first module of this workshop might more open permissions than what you need here.
 
 ### High-Level Instructions
 
@@ -42,21 +42,39 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 2. Click on Amazon SageMaker from the list of all services.  This will bring you to the Amazon SageMaker console homepage.
 
-![Services in Console](../images/console-services.png)
+![Services in Console](../images/lifecycle_configuration.png)
 
-3. To create a new notebook instance, go to **Notebook instances**, and click the **Create notebook instance** button at the top of the browser window.
+```
+#!/bin/bash
+
+set -e
+git clone https://github.com/dbinoy/Sagemaker_BYOA-LSTM_Keras.git SageMaker/nlp-workshop
+sudo chmod -R ugo+w SageMaker/nlp-workshop/
+sudo yum install -y docker
+sudo service docker start
+
+```
+
+
+3. Before you create a notebook instance, we want to create a "Lifecycle configuration". This is a small bootstrap script that will be run on the Notebook as soon as it starts. We will use this mechanism to download all the relevant notebook files.
+
+![Create lifecycle Configuration](../images/console-services.png)
+
+In this, enter the following script.
+
+4. To create a new notebook instance, go to **Notebook instances**, and click the **Create notebook instance** button at the top of the browser window.
 
 ![Notebook Instances](../images/notebook-instances.png)
 
-4. Type smworkshop-[First Name]-[Last Name] into the **Notebook instance name** text box, and select ml.m4.xlarge for the **Notebook instance type**.
+5. Type smworkshop-[First Name]-[Last Name] into the **Notebook instance name** text box, and select ml.m4.xlarge for the **Notebook instance type**.
 
 ![Create Notebook Instance](../images/notebook-settings.png)
 
-5. For IAM role, choose **Create a new role**, and in the resulting pop-up modal, select **Specific S3 buckets** under **S3 Buckets you specify – optional**. In the text field, paste the name of the S3 bucket you created above, AND the following bucket name separated from the first by a comma:  `gdelt-open-data`.  The combined field entry should look similar to ```smworkshop-john-smith, gdelt-open-data```. Click **Create role**.
+6. For IAM role, choose **Create a new role**, and in the resulting pop-up modal, select **Specific S3 buckets** under **S3 Buckets you specify – optional**. In the text field, paste the name of the S3 bucket you created above, AND the following bucket name separated from the first by a comma:  `gdelt-open-data`.  The combined field entry should look similar to ```smworkshop-john-smith, gdelt-open-data```. Click **Create role**.
 
 ![Create IAM role](../images/role-popup.png)
 
-6. You will be taken back to the Create Notebook instance page.  Click **Create notebook instance**.
+7. You will be taken back to the Create Notebook instance page.  Click **Create notebook instance**.
 
 ### 3. Accessing the Notebook Instance
 
