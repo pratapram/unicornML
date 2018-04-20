@@ -42,25 +42,29 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 2. Click on Amazon SageMaker from the list of all services.  This will bring you to the Amazon SageMaker console homepage.
 
-![Services in Console](../images/lifecycle_configuration.png)
+![Services in Console](../images/console-services.png)
+
+
+3. Before you create a notebook instance, we want to create a "Lifecycle configuration". This is a small bootstrap script that will be run on the Notebook as soon as it starts. We will use this mechanism to download all the relevant notebook files.
+
+![Create lifecycle Configuration](images/lifecycle_configuration.png)
+
+In this, enter the following script.
 
 ```
 #!/bin/bash
-
 set -e
-git clone https://github.com/dbinoy/Sagemaker_BYOA-LSTM_Keras.git SageMaker/nlp-workshop
+git clone https://github.com/pratapram/unicornML.git
+mkdir SageMaker/nlp-workshop
+mv unicornML/3_NLPClassifier/container SageMaker/nlp-workshop/container/
+mv unicornML/3_NLPClassifier/notebooks SageMaker/nlp-workshop/notebooks/
+rm -rf unicornML
 sudo chmod -R ugo+w SageMaker/nlp-workshop/
 sudo yum install -y docker
 sudo service docker start
 
 ```
 
-
-3. Before you create a notebook instance, we want to create a "Lifecycle configuration". This is a small bootstrap script that will be run on the Notebook as soon as it starts. We will use this mechanism to download all the relevant notebook files.
-
-![Create lifecycle Configuration](../images/console-services.png)
-
-In this, enter the following script.
 
 4. To create a new notebook instance, go to **Notebook instances**, and click the **Create notebook instance** button at the top of the browser window.
 
