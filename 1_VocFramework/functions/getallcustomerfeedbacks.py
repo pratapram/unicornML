@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     try:
         response = table.scan(
             FilterExpression=Attr('Feedback').exists(),
-            ProjectionExpression = 'ID,FirstName,LastName,Feedback,PostedTime,Sentiment'
+            ProjectionExpression = 'ID,FirstName,LastName,Feedback,PostedTime,Sentiment,Gender'
         )
         items = response['Items']    
         return items
