@@ -33,6 +33,8 @@ This workshop is broken up into multiple modules. You must complete each module 
 1. [Creating a VOC application framework](1_VocFramework)
 2. [Adding sentiment analysis](2_SentimentAnalysis)
 3. [Create your own NLP classifier](3_NLPClassifier)
+4. [Named entity recognition](Coming soon)
+5. [Topic modelling of the feedback](Coming soon)
 
 After you have completed the workshop you can delete all of the resources that were created by following the [cleanup guide](9_CleanUp).
 
