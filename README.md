@@ -36,10 +36,9 @@ This workshop is broken up into multiple modules. You must complete each module 
 4. [Named entity recognition](Coming soon)
 5. [Topic modelling of the feedback](Coming soon)
 
-After you have completed the workshop you can delete all of the resources that were created by following the [cleanup guide](9_CleanUp).
 
 ## Cleanup
-Please delete the following resources in this given order. 
+After you have completed the workshop you can delete all of the resources that were created in the following order.
 1. Delete Cloudformation stack created in Step #3
 2. Delete Cloudformation stack created in Step #2
 3. Delete Cloudformation stack created in Step #1
