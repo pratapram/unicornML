@@ -38,13 +38,10 @@ This workshop is broken up into multiple modules. You must complete each module 
 
 After you have completed the workshop you can delete all of the resources that were created by following the [cleanup guide](9_CleanUp).
 
-# unicornML
-
-This is a repository to hold artefacts for the AWS workshop
-
-Files:
-The sagemaker notebook: gender-classifier-golden.ipynb
-
-The sagemaker python file: gender-keras-2.py
-
-The lambda function to invoke sagemaker endpoint: lambda_sagemaker_invoke.py
+## Cleanup
+Please delete the following resources in this given order. 
+1. Delete Cloudformation stack created in Step #3
+2. Delete Cloudformation stack created in Step #2
+3. Delete Cloudformation stack created in Step #1
+4. Delete the Sagemaker deployment instance
+5. Delete the Sagemaker notebook instance
