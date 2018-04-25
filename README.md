@@ -1,3 +1,11 @@
+# New NLP workshop
+
+1. Module 1 - Comprehend - 30 mins
+2. Module 2 - Gender classifier - 60 mins
+3. Module 3 - Summarizer - 60 mins (optional)
+4. Launch application - 15 mins
+
+
 # Serverless NLP Workshop
 
 In this workshop you'll deploy a voice-of-the-customer application that enables users to submit feedback about your product. The application will present users with an HTML based user interface for providing feeback and will interface on the backend with a RESTful web service to submit the request. The internal facing application will help the business owners to analyze the feedback provided using Natural Language Processing (NLP) techniques.
