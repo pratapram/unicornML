@@ -1,20 +1,8 @@
-# New NLP workshop
-
-1. Module 1 - Comprehend - 30 mins
-2. Module 2 - Gender classifier - 60 mins
-3. Module 3 - Summarizer - 60 mins (optional)
-4. Launch application - 15 mins
-
-
 # Serverless NLP Workshop
 
-In this workshop you'll deploy a voice-of-the-customer application that enables users to submit feedback about your product. The application will present users with an HTML based user interface for providing feeback and will interface on the backend with a RESTful web service to submit the request. The internal facing application will help the business owners to analyze the feedback provided using Natural Language Processing (NLP) techniques.
-
-The application architecture uses [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon S3](https://aws.amazon.com/s3/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/), [Amazon Comprehend](https://aws.amazon.com/comprehend/), [Amazon ECR](https://aws.amazon.com/ecr/), and [Amazon SageMaker](https://aws.amazon.com/sagemaker/). S3 hosts static web resources including HTML, CSS, JavaScript, and image files which are loaded in the user's browser. JavaScript executed in the browser sends and receives data from a public backend API built using Lambda and API Gateway. DynamoDB provides a  persistence layer where data can be stored by the API's Lambda function. Comprehend provides NAtural Language Processing service needed to predict the sentiment from the feedback entered by users. SageMaker is used to orchestrate the machine learning process needed to predict gender of the user from name. ECR is used to host the machine learning training code. Finally, Python binding for Keras - machine learning framework is used to create the model needed for gender prediction.
+In this workshop you will explore the AWS services needed to enhance your a voice-of-the-customer application with Natural Langage Processing techniques.  The application architecture uses [Amazon Comprehend](https://aws.amazon.com/comprehend/), [Amazon SageMaker](https://aws.amazon.com/sagemaker/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon S3](https://aws.amazon.com/s3/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) and [Amazon ECR](https://aws.amazon.com/ecr/). Comprehend provides Natural Language Processing service needed to predict the sentiment from the feedback entered by users. SageMaker is used to orchestrate the machine learning process needed to predict gender of the user from name. S3 hosts static web resources including HTML, CSS, JavaScript, and image files which are loaded in the user's browser. JavaScript executed in the browser sends and receives data from a public backend API built using Lambda and API Gateway. DynamoDB provides a  persistence layer where data can be stored by the API's Lambda function. ECR is used to host the machine learning training code. Finally, Python binding for Keras - machine learning framework is used to create the model needed for gender prediction.
 
 See the diagram below for a depiction of the complete architecture.
-
-![Unicorn ML Application Architecture](images/unicornml-complete-architecture.png)
 
 If you'd like to jump in and get started please visit the [VoC Framework](1_VocFramework) module page to begin the workshop.
 
@@ -36,19 +24,17 @@ You will need a local text editor for making minor updates to configuration file
 
 ## Modules
 
-This workshop is broken up into multiple modules. You must complete each module before proceeding to the next, however, modules 1 and 2 have AWS CloudFormation templates available that you can use to launch the necessary resources without manually creating them yourself if you'd like to skip ahead.
+This workshop is broken up into multiple modules. You must complete each module before proceeding to the next. The first module has a slidedeck to understand the context, then second module explores the use of Amazon Comprehend, the next model helps you build a TensorFlow Model in Sagemaker, and in the last module we build the complete voice-of-the-customer application using a CloudFormation template. 
 
-1. [Creating a VOC application framework](1_VocFramework)
-2. [Adding sentiment analysis](2_SentimentAnalysis)
-3. [Create your own NLP classifier](3_NLPClassifier)
-4. [Named entity recognition](Coming soon)
-5. [Topic modelling of the feedback](Coming soon)
+2. [NLP workshop Slides](Presentation-AWS-NLP-workshop.pptx) - 15 mins
+2. [Using Amazon Comprehend to add sentiment analysis](1_SentimentAnalysis) - 30 mins
+3. [Create your own NLP classifier](2_NLPClassifier) - 60 mins
+4. [Create a summarizer](Coming soon)
+5. [Creating a VOC application framework](4_VocFramework) - 15 mins
 
 
 ## Cleanup
 After you have completed the workshop you can delete all of the resources that were created in the following order.
-1. Delete Cloudformation stack created in Step #3
-2. Delete Cloudformation stack created in Step #2
-3. Delete Cloudformation stack created in Step #1
-4. Delete the Sagemaker deployment instance
-5. Delete the Sagemaker notebook instance
+1. Delete Cloudformation stack created in Step #4
+2. Delete the Sagemaker deployment instance
+3. Delete the Sagemaker notebook instance
