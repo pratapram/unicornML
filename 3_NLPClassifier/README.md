@@ -96,4 +96,4 @@ Now, you are going to build a machine learning model on SageMaker. The notebook 
 
 Now you will be able to make predictions about the gender of the customer from the first name. Try to see if you can increase the accuracy of your predictions.
 
-Congratulations, you have completed the module 3 of the NLP Workshop! Now, you are ready to create a voc-application and insert this new endpoint in the application in the [next module](5_VocFramework).
+Congratulations, you have completed the module 3 of the NLP Workshop! Now, you are ready to create a voc-application and insert this new endpoint in the application in the [next module](../5_VocFramework).
