@@ -1,10 +1,7 @@
 # Serverless NLP Workshop
 
-In this workshop you will explore the AWS services needed to enhance your a voice-of-the-customer application with Natural Langage Processing techniques.  The application architecture uses [Amazon Comprehend](https://aws.amazon.com/comprehend/), [Amazon SageMaker](https://aws.amazon.com/sagemaker/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon S3](https://aws.amazon.com/s3/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) and [Amazon ECR](https://aws.amazon.com/ecr/). Comprehend provides Natural Language Processing service needed to predict the sentiment from the feedback entered by users. SageMaker is used to orchestrate the machine learning process needed to predict gender of the user from name. S3 hosts static web resources including HTML, CSS, JavaScript, and image files which are loaded in the user's browser. JavaScript executed in the browser sends and receives data from a public backend API built using Lambda and API Gateway. DynamoDB provides a  persistence layer where data can be stored by the API's Lambda function. ECR is used to host the machine learning training code. Finally, Python binding for Keras - machine learning framework is used to create the model needed for gender prediction.
-
-See the diagram below for a depiction of the complete architecture.
-
-If you'd like to jump in and get started please visit the [VoC Framework](1_VocFramework) module page to begin the workshop.
+  In this workshop you will explore the AWS services needed to enhance your a voice-of-the-customer application with Natural Langage Processing techniques.  The application architecture uses [Amazon Comprehend](https://aws.amazon.com/comprehend/), [Amazon SageMaker](https://aws.amazon.com/sagemaker/), [AWS Lambda](https://aws.amazon.com/lambda/), [Amazon API Gateway](https://aws.amazon.com/api-gateway/), [Amazon S3](https://aws.amazon.com/s3/), [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) and [Amazon ECR](https://aws.amazon.com/ecr/). 
+   Comprehend provides Natural Language Processing service needed to predict the sentiment from the feedback entered by users. SageMaker is used to orchestrate the machine learning process needed to predict gender of the user from name. S3 hosts static web resources including HTML, CSS, JavaScript, and image files which are loaded in the user's browser. JavaScript executed in the browser sends and receives data from a public backend API built using Lambda and API Gateway. DynamoDB provides a  persistence layer where data can be stored by the API's Lambda function. ECR is used to host the machine learning training code. Finally, Python binding for Keras - machine learning framework is used to create the model needed for gender prediction.
 
 ## Prerequisites
 
@@ -18,10 +15,6 @@ All of the resources you will launch as part of this workshop are eligible for t
 
 We recommend you use the latest version of Chrome to complete this workshop.
 
-### Text Editor
-
-You will need a local text editor for making minor updates to configuration files.
-
 ## Modules
 
 This workshop is broken up into multiple modules. You must complete each module before proceeding to the next. The first module has a slidedeck to understand the context, then second module explores the use of Amazon Comprehend, the next model helps you build a TensorFlow Model in Sagemaker, and in the last module we build the complete voice-of-the-customer application using a CloudFormation template. 
@@ -31,7 +24,6 @@ This workshop is broken up into multiple modules. You must complete each module 
 3. [Create your own NLP classifier](2_NLPClassifier) - 60 mins
 4. [Create a summarizer](Coming soon)
 5. [Creating a VOC application framework](4_VocFramework) - 15 mins
-
 
 ## Cleanup
 After you have completed the workshop you can delete all of the resources that were created in the following order.
