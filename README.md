@@ -28,6 +28,6 @@ This workshop is broken up into multiple modules. You must complete each module 
 
 ## Cleanup
 After you have completed the workshop you can delete all of the resources that were created in the following order.
-1. Delete Cloudformation stack created in Step #4
+1. Delete Cloudformation stack created in Step #5
 2. Delete the Sagemaker deployment instance
 3. Delete the Sagemaker notebook instance
